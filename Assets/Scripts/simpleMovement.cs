@@ -20,20 +20,9 @@ public class simpleMovement : MonoBehaviour
     {
         // Movement using velocity
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            playerRb.velocity = playerRb.velocity + new Vector2(0, jumpSpeedForce * 1);
-        }
-
-        if (Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.RightArrow))
-        {
-            playerRb.velocity = new Vector2(physicsMovementSpeed * 1, 0);
-        }
-
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            playerRb.velocity = new Vector2(physicsMovementSpeed * -1, 0);
-        }
+        float moveX = Input.GetAxis("Horizontal");
+        Vector2 move = new Vector2(moveX, 0.0f);
+        playerRb.position += move * physicsMovementSpeed * Time.deltaTime;
 
        // playerRb.velocity = new Vector2(0, -9);
 
