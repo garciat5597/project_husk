@@ -484,9 +484,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 1
-  m_GravityScale: 8
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -531,6 +531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsMovementSpeed: 10
+  jumpSpeedForce: 20
+  translationMovementSpeed: 1
   playerRb: {fileID: 1340787214}
 --- !u!23 &1340787217
 MeshRenderer:
