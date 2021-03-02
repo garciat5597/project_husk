@@ -7,6 +7,7 @@ public class simpleMovement : MonoBehaviour
     public float physicsMovementSpeed = 10;
     public float jumpSpeedForce = 100;
     public float translationMovementSpeed = 1;
+    public float playerGravity = 0.1f;
     public Rigidbody2D playerRb;
     // Start is called before the first frame update
     void Start()
@@ -14,28 +15,33 @@ public class simpleMovement : MonoBehaviour
 
     }
 
-    
+
     // Update is called once per frame
     void Update()
     {
         // Movement using velocity
-
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        jump();
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            playerRb.velocity = playerRb.velocity + new Vector2(0, jumpSpeedForce * 1);
-        }
-
-        if (Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.RightArrow))
-        {
-            playerRb.velocity = new Vector2(physicsMovementSpeed * 1, 0);
+            jump();
+            playerRb.AddForce(new Vector2(physicsMovementSpeed * 1, 0));
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            playerRb.velocity = new Vector2(physicsMovementSpeed * -1, 0);
+            jump();
+            playerRb.AddForce(new Vector2(physicsMovementSpeed * -1, 0));
         }
-
-       // playerRb.velocity = new Vector2(0, -9);
+    }
+    void jump()
+    {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            print("jumped");
+            playerRb.velocity = playerRb.velocity + new Vector2(0, jumpSpeedForce * 1);
+        }
+    }
+       
 
         /*
         // Movement using transform
@@ -51,5 +57,5 @@ public class simpleMovement : MonoBehaviour
             gameObject.transform.position = Vector2.Lerp(playPos, playPos + Vector2.right, translationMovementSpeed / 100);
         }
         */
-    }
+ 
 }
