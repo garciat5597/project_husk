@@ -6,25 +6,48 @@ public class Controller : MonoBehaviour
 {
     /*
      * Final controller work in progress
+     * Will be used for both the player and Husk
      */
+    private Rigidbody2D rb;
 
     [SerializeField]
     private float horizontalSpeed = 10.0f;
     [SerializeField]
-    private float jumpForce = 15.0f;
+    private float minHorizontalSpeed = -15.0f;
     [SerializeField]
-    private float dashSpeed = 15.0f;
+    private float maxHorizontalSpeed = 15.0f;
+    [SerializeField]
+    private float jumpForce = 20.0f;
+    [SerializeField]
+    private float dashSpeed = 20.0f;
+    [SerializeField]
+    private float gravity = 4.9f;
     [SerializeField]
     private int numJumps = 2;
     [SerializeField]
-    private bool isGrounded = true;
-    [SerializeField]
     private bool canDash = true;
+
+    [SerializeField]
+    private MotionStates current;
+    enum MotionStates
+    {
+        GROUNDED,
+        AIRBORNE,
+        DASHING,
+        WALLCLING
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Load the character's rigidbody
+        if (!rb)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        current = MotionStates.GROUNDED;
+
     }
 
     // Update is called once per frame
@@ -33,9 +56,11 @@ public class Controller : MonoBehaviour
         
     }
 
+    // Physics logic should be updated here
     private void FixedUpdate()
     {
-        
+        // Update velocity based on player state and motion
+
     }
 
     /*
@@ -43,9 +68,11 @@ public class Controller : MonoBehaviour
     * Players can control their movement on this axis at all times
     * There should be a small period of acceleration and deceleration
     */
-    void HorizontalMove()
+    void HorizontalMove(float direction)
     {
-
+        rb.velocity += new Vector2(direction * horizontalSpeed, 0);
+        // This provides a maximum horizontal speed while running. Players can achieve faster speeds by dashing, so the clamp should not be universal
+        Mathf.Clamp(rb.velocity.x, minHorizontalSpeed, maxHorizontalSpeed);
     }
 
     /*
@@ -55,7 +82,16 @@ public class Controller : MonoBehaviour
      */
     void jump()
     {
-
+        if (numJumps > 0)
+        {
+            rb.AddForce(new Vector2(0, jumpForce));
+            numJumps--;
+            // Update the state machine if needed
+            if (current != MotionStates.AIRBORNE)
+            {
+                current = MotionStates.AIRBORNE;
+            }
+        }
     }
 
     /*
@@ -67,4 +103,6 @@ public class Controller : MonoBehaviour
     {
 
     }
+
+
 }
