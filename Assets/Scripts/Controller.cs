@@ -6,25 +6,50 @@ public class Controller : MonoBehaviour
 {
     /*
      * Final controller work in progress
+     * Will be used for both the player and Husk
      */
+    private Rigidbody2D rb;
 
     [SerializeField]
-    private float horizontalSpeed = 10.0f;
+    private float horizontalSpeed = 20.0f;
     [SerializeField]
-    private float jumpForce = 15.0f;
+    private float minHorizontalSpeed = -30.0f;
     [SerializeField]
-    private float dashSpeed = 15.0f;
+    private float maxHorizontalSpeed = 20.0f;
+    [SerializeField]
+    private Vector2 currentVelocity = Vector2.zero;
+    [SerializeField]
+    private float jumpForce = 400.0f;
+    [SerializeField]
+    private float dashSpeed = 5000.0f;
+    [SerializeField]
+    private float gravity = 4.9f;
     [SerializeField]
     private int numJumps = 2;
     [SerializeField]
-    private bool isGrounded = true;
-    [SerializeField]
     private bool canDash = true;
+
+    [SerializeField]
+    private MotionStates current;
+    enum MotionStates
+    {
+        GROUNDED,
+        AIRBORNE,
+        DASHING,
+        WALLCLING
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Load the character's rigidbody
+        if (!rb)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        current = MotionStates.GROUNDED;
+
     }
 
     // Update is called once per frame
@@ -33,9 +58,11 @@ public class Controller : MonoBehaviour
         
     }
 
+    // Physics logic should be updated here
     private void FixedUpdate()
     {
-        
+        // Update velocity based on player state and motion
+
     }
 
     /*
@@ -43,9 +70,11 @@ public class Controller : MonoBehaviour
     * Players can control their movement on this axis at all times
     * There should be a small period of acceleration and deceleration
     */
-    void HorizontalMove()
+    public void HorizontalMove(float direction)
     {
-
+        // Should execute as long as state does not equal dashing
+        Vector2 targetVel = new Vector2(direction * horizontalSpeed, 0f);
+        rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
     }
 
     /*
@@ -53,18 +82,47 @@ public class Controller : MonoBehaviour
      * Players have one ground jump and one air jump
      * Jumps should only activate on a press, so that holding the jump button does not expend an air jump
      */
-    void jump()
+    public void jump()
     {
-
+        if (numJumps > 0)
+        {
+            rb.AddForce(new Vector2(0, jumpForce));
+            Debug.Log("Jump");
+            numJumps--;
+            // Update the state machine if needed
+            if (current != MotionStates.AIRBORNE)
+            {
+                current = MotionStates.AIRBORNE;
+            }
+        }
     }
 
     /*
      * Adds a burst of momentum on the X axis.
      * Player recieves a flat number addeded to their momentum in the direction they are facing, after which it falls back down to the normal horizontal movement speed
      * Works on both ground and in air, but will have a different animation in the air.
+     * For the length of the dash animation, Y momentum is halted.
      */
-    void dash()
+    public void dash(int sign)
     {
-
+        if (canDash)
+        {
+            // Change this so that accounts for player direction
+            Vector2 dashForce = new Vector2(sign * dashSpeed, 0);
+            rb.AddForce(dashForce);
+            Debug.Log("Dash force: "  + dashForce);
+            canDash = false;
+            StartCoroutine(dashCooldown());
+            // Change state to dashing
+        }
     }
+
+    // Dash currently working on a 1 second cooldown.
+    IEnumerator dashCooldown()
+    {
+        yield return new WaitForSeconds(1.0f);
+        canDash = true;
+    }
+
+
 }

@@ -464,6 +464,8 @@ GameObject:
   - component: {fileID: 1340787216}
   - component: {fileID: 1340787215}
   - component: {fileID: 1340787214}
+  - component: {fileID: 1340787221}
+  - component: {fileID: 1340787220}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -486,7 +488,7 @@ Rigidbody2D:
   m_Mass: 5
   m_LinearDrag: 10
   m_AngularDrag: 1
-  m_GravityScale: 9
+  m_GravityScale: 1.8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -598,3 +600,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1340787220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340787213}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd09e37d4dd75264f87a45255f986caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalSpeed: 20
+  minHorizontalSpeed: -30
+  maxHorizontalSpeed: 30
+  currentVelocity: {x: 0, y: 0}
+  jumpForce: 400
+  dashSpeed: 1000
+  gravity: 4.9
+  numJumps: 2
+  canDash: 1
+  current: 0
+--- !u!114 &1340787221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340787213}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57fa2a1fbdea8644bf5a36c1c26a3e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
