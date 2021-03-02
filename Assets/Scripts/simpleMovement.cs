@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class simpleMovement : MonoBehaviour
 {
-    public float physicsMovementSpeed = 10;
-    public float jumpSpeedForce = 100;
+    public float physicsMovementSpeed = 30;
+    public float jumpSpeedForce = 15;
     public float translationMovementSpeed = 1;
     public float playerGravity = 0.1f;
     public Rigidbody2D playerRb;
