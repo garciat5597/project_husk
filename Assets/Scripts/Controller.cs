@@ -11,17 +11,17 @@ public class Controller : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField]
-    private float horizontalSpeed = 10.0f;
+    private float horizontalSpeed = 20.0f;
     [SerializeField]
-    private float minHorizontalSpeed = -15.0f;
+    private float minHorizontalSpeed = -30.0f;
     [SerializeField]
-    private float maxHorizontalSpeed = 15.0f;
+    private float maxHorizontalSpeed = 20.0f;
     [SerializeField]
     private Vector2 currentVelocity = Vector2.zero;
     [SerializeField]
     private float jumpForce = 400.0f;
     [SerializeField]
-    private float dashSpeed = 20.0f;
+    private float dashSpeed = 5000.0f;
     [SerializeField]
     private float gravity = 4.9f;
     [SerializeField]
@@ -72,10 +72,9 @@ public class Controller : MonoBehaviour
     */
     public void HorizontalMove(float direction)
     {
+        // Should execute as long as state does not equal dashing
         Vector2 targetVel = new Vector2(direction * horizontalSpeed, 0f);
         rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
-        // This provides a maximum horizontal speed while running. Players can achieve faster speeds by dashing, so the clamp should not be universal
-        Mathf.Clamp(rb.velocity.x, minHorizontalSpeed, maxHorizontalSpeed);
     }
 
     /*
@@ -104,11 +103,14 @@ public class Controller : MonoBehaviour
      * Works on both ground and in air, but will have a different animation in the air.
      * For the length of the dash animation, Y momentum is halted.
      */
-    public void dash()
+    public void dash(int sign)
     {
         if (canDash)
         {
-            rb.AddForce(new Vector2(dashSpeed, 0));
+            // Change this so that accounts for player direction
+            Vector2 dashForce = new Vector2(sign * dashSpeed, 0);
+            rb.AddForce(dashForce);
+            Debug.Log("Dash force: "  + dashForce);
             canDash = false;
             StartCoroutine(dashCooldown());
             // Change state to dashing
