@@ -17,7 +17,9 @@ public class Controller : MonoBehaviour
     [SerializeField]
     private float maxHorizontalSpeed = 15.0f;
     [SerializeField]
-    private float jumpForce = 20.0f;
+    private Vector2 currentVelocity = Vector2.zero;
+    [SerializeField]
+    private float jumpForce = 400.0f;
     [SerializeField]
     private float dashSpeed = 20.0f;
     [SerializeField]
@@ -68,9 +70,10 @@ public class Controller : MonoBehaviour
     * Players can control their movement on this axis at all times
     * There should be a small period of acceleration and deceleration
     */
-    void HorizontalMove(float direction)
+    public void HorizontalMove(float direction)
     {
-        rb.velocity += new Vector2(direction * horizontalSpeed, 0);
+        Vector2 targetVel = new Vector2(direction * horizontalSpeed, 0f);
+        rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
         // This provides a maximum horizontal speed while running. Players can achieve faster speeds by dashing, so the clamp should not be universal
         Mathf.Clamp(rb.velocity.x, minHorizontalSpeed, maxHorizontalSpeed);
     }
@@ -80,11 +83,12 @@ public class Controller : MonoBehaviour
      * Players have one ground jump and one air jump
      * Jumps should only activate on a press, so that holding the jump button does not expend an air jump
      */
-    void jump()
+    public void jump()
     {
         if (numJumps > 0)
         {
             rb.AddForce(new Vector2(0, jumpForce));
+            Debug.Log("Jump");
             numJumps--;
             // Update the state machine if needed
             if (current != MotionStates.AIRBORNE)
@@ -98,10 +102,24 @@ public class Controller : MonoBehaviour
      * Adds a burst of momentum on the X axis.
      * Player recieves a flat number addeded to their momentum in the direction they are facing, after which it falls back down to the normal horizontal movement speed
      * Works on both ground and in air, but will have a different animation in the air.
+     * For the length of the dash animation, Y momentum is halted.
      */
-    void dash()
+    public void dash()
     {
+        if (canDash)
+        {
+            rb.AddForce(new Vector2(dashSpeed, 0));
+            canDash = false;
+            StartCoroutine(dashCooldown());
+            // Change state to dashing
+        }
+    }
 
+    // Dash currently working on a 1 second cooldown.
+    IEnumerator dashCooldown()
+    {
+        yield return new WaitForSeconds(1.0f);
+        canDash = true;
     }
 
 

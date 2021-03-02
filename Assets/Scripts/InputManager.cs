@@ -5,16 +5,48 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     Controller movement;
+    float horizMove = 0.0f;
+    bool jump = false;
+    bool dash = false;
     // Start is called before the first frame update
     void Start()
     {
         movement = GetComponent<Controller>();
+        if (movement)
+        {
+            Debug.Log("Controller loaded");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Take input and pass the appropriate actions to the Controller object.
+        horizMove = Input.GetAxisRaw("Horizontal");
 
+        if (Input.GetButtonDown("Jump"))
+        {
+            jump = true;
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            dash = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        movement.HorizontalMove(horizMove);
+        if (dash)
+        {
+            movement.dash();
+            dash = false;
+        }
+        if (jump)
+        {
+            movement.jump();
+            jump = false;
+        }
+        
     }
 }
