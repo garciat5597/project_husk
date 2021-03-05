@@ -704,17 +704,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340787213}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd09e37d4dd75264f87a45255f986caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeed: 20
-  minHorizontalSpeed: -30
-  maxHorizontalSpeed: 30
   currentVelocity: {x: 0, y: 0}
-  jumpForce: 400
-  dashSpeed: 1000
+  jumpForce: 15000
+  dashSpeed: 8000
   gravity: 4.9
   numJumps: 2
   canDash: 1
@@ -726,7 +724,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340787213}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57fa2a1fbdea8644bf5a36c1c26a3e1, type: 3}
   m_Name: 

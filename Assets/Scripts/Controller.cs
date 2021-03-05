@@ -11,21 +11,21 @@ public class Controller : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField]
-    private float horizontalSpeed = 20.0f;
-    [SerializeField]
-    private float minHorizontalSpeed = -30.0f;
-    [SerializeField]
-    private float maxHorizontalSpeed = 20.0f;
+    private float horizontalSpeed = 30.0f;
     [SerializeField]
     private Vector2 currentVelocity = Vector2.zero;
     [SerializeField]
-    private float jumpForce = 400.0f;
+    private float jumpForce = 15000.0f;
     [SerializeField]
-    private float dashSpeed = 5000.0f;
+    private float dashSpeed = 8000.0f;
     [SerializeField]
-    private float gravity = 4.9f;
+    private float gravity = 9.8f;
     [SerializeField]
     private int numJumps = 2;
+    [SerializeField]
+    private static float MAX_FALL = -15.0f;
+    [SerializeField]
+    private static int MAX_JUMPS = 2;
     [SerializeField]
     private bool canDash = true;
 
@@ -36,7 +36,8 @@ public class Controller : MonoBehaviour
         GROUNDED,
         AIRBORNE,
         DASHING,
-        WALLCLING
+        WALLCLING,
+        STUNNED
     }
 
     // Start is called before the first frame update
@@ -62,7 +63,7 @@ public class Controller : MonoBehaviour
     private void FixedUpdate()
     {
         // Update velocity based on player state and motion
-
+        
     }
 
     /*
@@ -72,7 +73,6 @@ public class Controller : MonoBehaviour
     */
     public void HorizontalMove(float direction)
     {
-        // Should execute as long as state does not equal dashing
         Vector2 targetVel = new Vector2(direction * horizontalSpeed, 0f);
         rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
     }
@@ -87,7 +87,6 @@ public class Controller : MonoBehaviour
         if (numJumps > 0)
         {
             rb.AddForce(new Vector2(0, jumpForce));
-            Debug.Log("Jump");
             numJumps--;
             // Update the state machine if needed
             if (current != MotionStates.AIRBORNE)
@@ -109,10 +108,13 @@ public class Controller : MonoBehaviour
         {
             // Change this so that accounts for player direction
             Vector2 dashForce = new Vector2(sign * dashSpeed, 0);
+            // Pause the player at their current y axis value
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.gravityScale = 0f;
             rb.AddForce(dashForce);
-            Debug.Log("Dash force: "  + dashForce);
             canDash = false;
             StartCoroutine(dashCooldown());
+            StartCoroutine(dashGravity());
             // Change state to dashing
         }
     }
@@ -124,5 +126,22 @@ public class Controller : MonoBehaviour
         canDash = true;
     }
 
+    IEnumerator dashGravity()
+    {
+        yield return new WaitForSeconds(0.45f);
+        rb.gravityScale = gravity;
+    }
 
+    // Collision handler
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("collision detected");
+        if (collision.gameObject.tag == "Floor")
+        {
+            Debug.Log("floor detected");
+            // Become grounded, refresh jumps.
+            current = MotionStates.GROUNDED;
+            numJumps = MAX_JUMPS;
+        }
+    }
 }
