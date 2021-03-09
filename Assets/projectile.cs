@@ -6,6 +6,7 @@ public class projectile : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bookPrefab;
+    public int reloadTime = 1;
     private bool reloading = false;
 
     private void Start()
@@ -15,13 +16,17 @@ public class projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (reloading == false){
-            Shoot();
+        if (reloading == false)
+        {
+            StartCoroutine(Shoot());
         }
     }
 
-    void Shoot()
+    IEnumerator Shoot()
     {
+        reloading = true;
         Instantiate(bookPrefab, firePoint.position, firePoint.rotation);
+        yield return new WaitForSecondsRealtime(reloadTime);
+        reloading = false;
     }
 }
