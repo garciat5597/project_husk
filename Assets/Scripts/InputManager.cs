@@ -8,7 +8,6 @@ public class InputManager : MonoBehaviour
     float horizMove = 0.0f;
     bool jump = false;
     bool dash = false;
-    bool facingRight = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +24,11 @@ public class InputManager : MonoBehaviour
         horizMove = Input.GetAxisRaw("Horizontal");
         if (horizMove < 0)
         {
-            facingRight = false;
+            movement.setDirection(-1);
         }
         else if (horizMove > 0)
         {
-            facingRight = true;
+            movement.setDirection(1);
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -48,15 +47,7 @@ public class InputManager : MonoBehaviour
         movement.HorizontalMove(horizMove);
         if (dash)
         {
-            if (facingRight)
-            {
-                movement.dash(1);
-            }
-            else
-            {
-                movement.dash(-1);
-            }
-
+            movement.dash();
             dash = false;
         }
         if (jump)
