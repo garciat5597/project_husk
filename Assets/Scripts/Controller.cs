@@ -28,9 +28,11 @@ public class Controller : MonoBehaviour
     private static int MAX_JUMPS = 2;
     [SerializeField]
     private bool canDash = true;
+    [SerializeField]
+    private int direction = 1;
 
     [SerializeField]
-    private MotionStates current;
+    private MotionStates currentState;
     enum MotionStates
     {
         GROUNDED,
@@ -49,14 +51,14 @@ public class Controller : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
         }
 
-        current = MotionStates.GROUNDED;
+        currentState = MotionStates.GROUNDED;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Physics logic should be updated here
@@ -66,14 +68,19 @@ public class Controller : MonoBehaviour
         
     }
 
+    public void setDirection(int nDirection)
+    {
+        direction = nDirection;
+    }
+
     /*
     * Controls the movement in regards to the X axis.
     * Players can control their movement on this axis at all times
     * There should be a small period of acceleration and deceleration
     */
-    public void HorizontalMove(float direction)
+    public void HorizontalMove(float horizMove)
     {
-        Vector2 targetVel = new Vector2(direction * horizontalSpeed, 0f);
+        Vector2 targetVel = new Vector2(horizMove * horizontalSpeed, 0f);
         rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
     }
 
@@ -86,12 +93,20 @@ public class Controller : MonoBehaviour
     {
         if (numJumps > 0)
         {
-            rb.AddForce(new Vector2(0, jumpForce));
+            if (currentState == MotionStates.WALLCLING)
+            {
+                // Special jump arc out of wallcling
+                rb.AddForce(new Vector2(-direction * (jumpForce / 2), jumpForce));
+            }
+            else
+            {
+                rb.AddForce(new Vector2(0, jumpForce));
+            }
             numJumps--;
             // Update the state machine if needed
-            if (current != MotionStates.AIRBORNE)
+            if (currentState != MotionStates.AIRBORNE)
             {
-                current = MotionStates.AIRBORNE;
+                currentState = MotionStates.AIRBORNE;
             }
         }
     }
@@ -102,12 +117,12 @@ public class Controller : MonoBehaviour
      * Works on both ground and in air, but will have a different animation in the air.
      * For the length of the dash animation, Y momentum is halted.
      */
-    public void dash(int sign)
+    public void dash()
     {
         if (canDash)
         {
             // Change this so that accounts for player direction
-            Vector2 dashForce = new Vector2(sign * dashSpeed, 0);
+            Vector2 dashForce = new Vector2(direction * dashSpeed, 0);
             // Pause the player at their current y axis value
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.gravityScale = 0f;
@@ -126,22 +141,65 @@ public class Controller : MonoBehaviour
         canDash = true;
     }
 
+    // Wait to reset gravity
     IEnumerator dashGravity()
     {
         yield return new WaitForSeconds(0.45f);
-        rb.gravityScale = gravity;
+        // Prevent gravity from re-enabling early if player dashes into a wall.
+        if(currentState != MotionStates.WALLCLING)
+        {
+            rb.gravityScale = gravity;
+        }
     }
 
     // Collision handler
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision detected");
+        // When touching the floor
         if (collision.gameObject.tag == "Floor")
         {
-            Debug.Log("floor detected");
             // Become grounded, refresh jumps.
-            current = MotionStates.GROUNDED;
+            currentState = MotionStates.GROUNDED;
             numJumps = MAX_JUMPS;
         }
+        // Activate wallcling
+        if (collision.gameObject.tag == "Wall")
+        {
+            currentState = MotionStates.WALLCLING;
+            rb.gravityScale = 0f;
+            // Recover one jump if the player has none when they wallcling
+            if (numJumps < 1)
+            {
+                numJumps++;
+            }
+            StartCoroutine(wallclingGravity());
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        // When leaving the ground, check if jumps > 1. If so, reduce to 1
+        if (collision.gameObject.tag == "Floor")
+        {
+            currentState = MotionStates.AIRBORNE;
+            if (numJumps > 1)
+            {
+                numJumps--;
+            }
+        }
+        // Reset gravity and exit wallcling prematurely
+        if (collision.gameObject.tag == "Wall")
+        {
+            currentState = MotionStates.AIRBORNE;
+            rb.gravityScale = gravity;
+        }
+    }
+
+    IEnumerator wallclingGravity()
+    {
+        // Max time that player can hold a wallcling.
+        yield return new WaitForSeconds(1.0f);
+        currentState = MotionStates.AIRBORNE;
+        rb.gravityScale = gravity;
     }
 }
