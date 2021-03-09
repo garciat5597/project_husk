@@ -15,15 +15,15 @@ public class Controller : MonoBehaviour
     [SerializeField]
     private Vector2 currentVelocity = Vector2.zero;
     [SerializeField]
-    private float jumpForce = 15000.0f;
+    private float jumpForce = 6000.0f;
     [SerializeField]
-    private float dashSpeed = 8000.0f;
+    private float dashSpeed = 5000.0f;
     [SerializeField]
     private float gravity = 9.8f;
     [SerializeField]
     private int numJumps = 2;
     [SerializeField]
-    private static float MAX_FALL = -15.0f;
+    private static float MAX_FALL = -25.0f;
     [SerializeField]
     private static int MAX_JUMPS = 2;
     [SerializeField]
@@ -64,7 +64,8 @@ public class Controller : MonoBehaviour
     // Physics logic should be updated here
     private void FixedUpdate()
     {
-        // Update velocity based on player state and motion
+        // Clamp fall speed
+        rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, MAX_FALL));
         
     }
 
@@ -80,7 +81,7 @@ public class Controller : MonoBehaviour
     */
     public void HorizontalMove(float horizMove)
     {
-        Vector2 targetVel = new Vector2(horizMove * horizontalSpeed, 0f);
+        Vector2 targetVel = new Vector2(horizMove * horizontalSpeed, rb.velocity.y);
         rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
     }
 
@@ -100,6 +101,7 @@ public class Controller : MonoBehaviour
             }
             else
             {
+                rb.velocity = new Vector2(rb.velocity.x, 0f);
                 rb.AddForce(new Vector2(0, jumpForce));
             }
             numJumps--;
@@ -166,6 +168,7 @@ public class Controller : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             currentState = MotionStates.WALLCLING;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.gravityScale = 0f;
             // Recover one jump if the player has none when they wallcling
             if (numJumps < 1)
