@@ -15,11 +15,11 @@ public class Controller : MonoBehaviour
     [SerializeField]
     private Vector2 currentVelocity = Vector2.zero;
     [SerializeField]
-    private float jumpForce = 6000.0f;
+    private float jumpForce = 1500.0f;
     [SerializeField]
-    private float dashSpeed = 5000.0f;
+    private float dashSpeed = 1500.0f;
     [SerializeField]
-    private float gravity = 9.8f;
+    private float gravity;
     [SerializeField]
     private int numJumps = 2;
     [SerializeField]
@@ -50,7 +50,7 @@ public class Controller : MonoBehaviour
         {
             rb = GetComponent<Rigidbody2D>();
         }
-
+        gravity = rb.gravityScale;
         currentState = MotionStates.GROUNDED;
 
     }
