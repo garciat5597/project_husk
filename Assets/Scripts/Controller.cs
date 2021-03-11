@@ -10,8 +10,8 @@ public class Controller : MonoBehaviour
      */
     private Rigidbody2D rb;
 
-    [SerializeField]
-    private float horizontalSpeed = 30.0f;
+    
+    public float horizontalSpeed = 30.0f;
     [SerializeField]
     private Vector2 currentVelocity = Vector2.zero;
     [SerializeField]
