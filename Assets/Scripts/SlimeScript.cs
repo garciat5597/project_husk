@@ -5,27 +5,35 @@ using UnityEngine;
 
 public class SlimeScript : MonoBehaviour
 {
-    private Controller player;
+    public float effectDuration;
+    public int effectStrength;
+    [SerializeField]
+    private Rigidbody2D player;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        Debug.Log("pre-play drag: " + player.drag);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        //if other gameObject's tag is equal to "DeathZone", re-spawn the player to 0,1,0 
+    void OnTriggerStay2D(Collider2D other)
+    { 
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("I'm in");
+            Debug.Log("Status Applied " + player.drag);
+            //player.velocity *= slimeEffect;
+            player.drag = effectStrength;
+        }  
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            StartCoroutine(slimeHazzardEffect());
         }
     }
-
+    IEnumerator slimeHazzardEffect()
+    {
+        yield return new WaitForSeconds(effectDuration);
+        player.drag = 1;
+        Debug.Log("Status Removed " + player.drag);
+    }
 }
