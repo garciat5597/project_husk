@@ -43,8 +43,13 @@ public class HuskController : MonoBehaviour
         // If husk is allowed to move, start pulling from the queue
         if (canMove)
         {
+            // Check that the Husk queue is not empty
+            // TODO: Check that the player is not stunned
+            // TODO: If the player is still or stunned, continue the Husk forward towards them
             if (inputs.Count > 0)
             {
+
+                // Raise movement flags based on dequeued input
                 InputLog currentInputs = inputs.Dequeue();
                 if (currentInputs.directionalInput < 0)
                 {
@@ -73,6 +78,7 @@ public class HuskController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Update in the controller
         movement.HorizontalMove(horizMove);
         horizMove = 0.0f;
         if (dash)
