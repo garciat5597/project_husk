@@ -11,6 +11,9 @@ public class CameraMovement : MonoBehaviour
     //private Vector3 ten = new Vector3(0, 0, -10);
     private float zOffset = -10;
 
+    private Vector3 target = new Vector3(0f, 0f, 0f);
+    private Vector3 targetOffset;
+
     [SerializeField] private float lerpXratio = 0.2f;
     [SerializeField] private float lerpXdistance = 10.0f;
     [SerializeField] private float cameraSpeed = 10.0f;
@@ -23,6 +26,8 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        targetOffset = player.transform.position + new Vector3(player.GetComponent<Rigidbody2D>().velocity.x, player.GetComponent<Rigidbody2D>().velocity.y, 0);
+        Debug.Log("targetOffset", targetOffset);
         // get magnitudes between player and camera, and player and husk
         Vector2 diffPlayerCamera = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
         Vector2 diffPlayerHusk = new Vector2(player.transform.position.x - husk.transform.position.x, player.transform.position.y - husk.transform.position.y);
@@ -31,7 +36,7 @@ public class CameraMovement : MonoBehaviour
         CameraMoveY(diffPlayerCamera);
         //CameraBound(diffPlayerCamera);
 
-        transform.position = new Vector3(transform.position.x, transform.position.y, zOffset);
+        transform.position = Vector3.MoveTowards(transform.position, target, cameraSpeed);
     }
 
     // Lerp between player and husk for horizontal movement
@@ -41,13 +46,13 @@ public class CameraMovement : MonoBehaviour
         if (diff.magnitude < lerpXdistance)
         {
             float _x = Mathf.Lerp(playerX, huskX, ratio);
-            transform.position = new Vector3(_x, transform.position.y, transform.position.z);
+            target = new Vector3(_x, target.y, zOffset);
         }
         // otherwise keep camera focused on player
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, cameraSpeed);
-            transform.position = player.transform.position;
+            transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
         }
     }
 
