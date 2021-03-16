@@ -47,6 +47,7 @@ public class CameraMovement : MonoBehaviour
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, cameraSpeed);
+            transform.position = player.transform.position;
         }
     }
 
