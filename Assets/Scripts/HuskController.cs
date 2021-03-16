@@ -7,7 +7,7 @@ public class HuskController : MonoBehaviour
     float spawnTimer = 5.0f;
     Queue<InputLog> inputs = new Queue<InputLog>();
     Rigidbody2D rb;
-    SpriteRenderer sprite;
+    //SpriteRenderer sprite;
     BoxCollider2D collider;
     GameObject player;
     [SerializeField]
@@ -22,7 +22,7 @@ public class HuskController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        //sprite = GetComponent<SpriteRenderer>();
         collider = GetComponent<BoxCollider2D>();
         if (!movement)
         {
@@ -100,7 +100,7 @@ public class HuskController : MonoBehaviour
         collider.enabled = true;
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        sprite.enabled = true;
+        //sprite.enabled = true;
         canMove = true;
     }
 
