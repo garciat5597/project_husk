@@ -205,4 +205,9 @@ public class Controller : MonoBehaviour
         currentState = MotionStates.AIRBORNE;
         rb.gravityScale = gravity;
     }
+
+    public void Hit()
+    {
+        Debug.Log("Hit registered");
+    }
 }
