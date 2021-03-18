@@ -208,6 +208,6 @@ public class Controller : MonoBehaviour
 
     public void Hit()
     {
-
+        Debug.Log("Hit registered");
     }
 }
