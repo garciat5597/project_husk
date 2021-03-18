@@ -27,7 +27,7 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         targetOffset = player.transform.position + new Vector3(player.GetComponent<Rigidbody2D>().velocity.x, player.GetComponent<Rigidbody2D>().velocity.y, 0);
-        Debug.Log("targetOffset", targetOffset);
+       // Debug.Log("targetOffset", targetOffset);
         // get magnitudes between player and camera, and player and husk
         Vector2 diffPlayerCamera = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
         Vector2 diffPlayerHusk = new Vector2(player.transform.position.x - husk.transform.position.x, player.transform.position.y - husk.transform.position.y);

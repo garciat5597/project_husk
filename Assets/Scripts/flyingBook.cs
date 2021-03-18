@@ -6,6 +6,7 @@ public class flyingBook : MonoBehaviour
 {
     public int flightSpeed=10;
     public float flightTime = 1.5f;
+    //public Controller player;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -20,5 +21,13 @@ public class flyingBook : MonoBehaviour
         float temp = rb.rotation;
         this.rb.rotation-=0.5f;
     }
-    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Controller player = other.gameObject.GetComponent<Controller>();
+            player.Hit();
+            Destroy(gameObject);
+        }
+    }
 }
