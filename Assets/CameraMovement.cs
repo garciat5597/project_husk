@@ -7,68 +7,74 @@ public class CameraMovement : MonoBehaviour
     public GameObject player;
     public GameObject husk;
 
-    // vector to bring camera position towards viewer
-    //private Vector3 ten = new Vector3(0, 0, -10);
-    private float zOffset = -10;
+    private float zOffset = -5;
 
-    private Vector3 target = new Vector3(0f, 0f, 0f);
-    private Vector3 targetOffset;
+    private Vector3 target = Vector3.zero;
+    private Vector3 targetOffset = new Vector3(0f, 0f, -8f);
+    private Vector3 playerVelocity = Vector3.zero;
 
-    [SerializeField] private float lerpXratio = 0.2f;
-    [SerializeField] private float lerpXdistance = 10.0f;
-    [SerializeField] private float cameraSpeed = 10.0f;
+    [SerializeField] private float lerpXratio = 0.15f;           // smaller value = closer to Player
+    [SerializeField] private float lerpXdistance = 12.0f;       // distance where CameraLerpX() starts
+    [SerializeField] private float cameraSpeed = 0.15f;
+    private Vector3 velocity = Vector3.zero;
 
-    [SerializeField] private float vertBoundUpper = 1;
-    [SerializeField] private float vertBoundLower = 1.5f;
+    [SerializeField] private float vertBoundUpper = 2f;       // boundaries for CameraMoveY()
+    [SerializeField] private float vertBoundLower = 4f;
 
     [SerializeField] private float clampRadius = 2.5f;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        targetOffset = player.transform.position + new Vector3(player.GetComponent<Rigidbody2D>().velocity.x, player.GetComponent<Rigidbody2D>().velocity.y, 0);
-       // Debug.Log("targetOffset", targetOffset);
+        playerVelocity = player.GetComponent<Rigidbody2D>().velocity;
+
         // get magnitudes between player and camera, and player and husk
-        Vector2 diffPlayerCamera = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
+        Vector2 diffPlayerCamera = new Vector2(player.transform.position.x - target.x, player.transform.position.y - target.y);
+        Debug.Log("target" + target);
+        Debug.Log("diffPlayerCamera: " + diffPlayerCamera);
         Vector2 diffPlayerHusk = new Vector2(player.transform.position.x - husk.transform.position.x, player.transform.position.y - husk.transform.position.y);
 
-        CameraLerpX(diffPlayerHusk, player.transform.position.x, husk.transform.position.x, lerpXratio, lerpXdistance);
+        CameraMoveX();
+        CameraLerpX(diffPlayerHusk, lerpXratio, lerpXdistance);
         CameraMoveY(diffPlayerCamera);
         //CameraBound(diffPlayerCamera);
 
-        transform.position = Vector3.MoveTowards(transform.position, target, cameraSpeed);
+        target += targetOffset;
+        //Debug.Log("target: " + target);
+
+        transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, cameraSpeed);
     }
 
-    // Lerp between player and husk for horizontal movement
-    void CameraLerpX(Vector2 diff, float playerX, float huskX, float ratio, float distance)
+    // Move horizontally based on Player's velocity
+    void CameraMoveX()
     {
-        // if husk is close to player, move camera to show husk
-        if (diff.magnitude < lerpXdistance)
+        target = new Vector3(player.transform.position.x + playerVelocity.x / 6, target.y, 0);
+    }
+
+    // If near to the Husk, lerp between player and husk for horizontal movement
+    void CameraLerpX(Vector2 diff, float ratio, float distance)
+    {
+        if (diff.magnitude < distance)
         {
-            float _x = Mathf.Lerp(playerX, huskX, ratio);
-            target = new Vector3(_x, target.y, zOffset);
-        }
-        // otherwise keep camera focused on player
-        else
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, cameraSpeed);
-            transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
+            float lerp = Mathf.Lerp(target.x, husk.transform.position.x, ratio);
+            target = new Vector3(lerp, target.y, 0);
         }
     }
 
-    // Move camera vertically based on player position
+    // Move camera vertically if Player crosses upper or lower boundary
     void CameraMoveY(Vector2 diff)
-    {        
-        // if y exceeds upper boundary
+    {
+        Debug.Log("ydiff: " + diff.y);
+        // if player is above camera
         if (diff.y > vertBoundUpper)
         {
-            transform.position = new Vector3(transform.position.x, player.transform.position.y - vertBoundUpper, transform.position.z);
+            target = new Vector3(target.x, player.transform.position.y - vertBoundUpper, 0);
         }
 
-        // if y exceeds lower boundary
+        // if player is below camera
         if (diff.y < -vertBoundLower)
         {
-            transform.position = new Vector3(transform.position.x, player.transform.position.y + vertBoundLower, transform.position.z);
+            target = new Vector3(target.x, player.transform.position.y + vertBoundLower, 0);
         }
     }
 
