@@ -7,12 +7,14 @@ public class TitleMenu : MonoBehaviour
 {
     public GameObject titleMenuUI;
 
+    [SerializeField] private string firstLevel = "Level 2";
+
     // Start the game, moving to the first scene
     public void StartGame()
     {
         Debug.Log("Moving to first scene");
         titleMenuUI.SetActive(false);
-        SceneManager.LoadScene("DevMicah", LoadSceneMode.Single);
+        SceneManager.LoadScene(firstLevel, LoadSceneMode.Single);
     }
 
     // Quit out of the game

@@ -13,12 +13,12 @@ public class CameraMovement : MonoBehaviour
     private Vector3 targetOffset = new Vector3(0f, 0f, -8f);
     private Vector3 playerVelocity = Vector3.zero;
 
-    [SerializeField] private float lerpXratio = 0.15f;           // smaller value = closer to Player
+    [SerializeField] private float lerpXratio = 0.15f;          // smaller value = closer to Player
     [SerializeField] private float lerpXdistance = 12.0f;       // distance where CameraLerpX() starts
     [SerializeField] private float cameraSpeed = 0.15f;
     private Vector3 velocity = Vector3.zero;
 
-    [SerializeField] private float vertBoundUpper = 2f;       // boundaries for CameraMoveY()
+    [SerializeField] private float vertBoundUpper = 2f;         // boundaries for CameraMoveY()
     [SerializeField] private float vertBoundLower = 4f;
 
     [SerializeField] private float clampRadius = 2.5f;
