@@ -6,11 +6,11 @@ public class Controller : MonoBehaviour
 {
     /*
      * Final controller work in progress
-     * Will be used for both the player and Husk
+     * Will be used for both the player's movement logic
      */
     private Rigidbody2D rb;
+    HuskController husk;
 
-    
     public float horizontalSpeed = 30.0f;
     [SerializeField]
     private Vector2 currentVelocity = Vector2.zero;
@@ -30,6 +30,7 @@ public class Controller : MonoBehaviour
     private bool canDash = true;
     [SerializeField]
     private int direction = 1;
+    bool addEntry = true;
 
     [SerializeField]
     private MotionStates currentState;
@@ -45,6 +46,7 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        husk = GameObject.FindGameObjectWithTag("Husk").GetComponent<HuskController>();
         // Load the character's rigidbody
         if (!rb)
         {
@@ -66,6 +68,13 @@ public class Controller : MonoBehaviour
     {
         // Clamp fall speed
         rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, MAX_FALL));
+        // Create a new entry every second
+        if (addEntry)
+        {
+            husk.addMoveEntry(gameObject.transform.position);
+            Debug.Log("Entry added, size: " + husk.waypoints.Count);
+            StartCoroutine(addHuskWaypoint());
+        }
         
     }
 
@@ -152,6 +161,13 @@ public class Controller : MonoBehaviour
         {
             rb.gravityScale = gravity;
         }
+    }
+
+    IEnumerator addHuskWaypoint()
+    {
+        addEntry = false;
+        yield return new WaitForSeconds(0.10f);
+        addEntry = true;
     }
 
     // Collision handler

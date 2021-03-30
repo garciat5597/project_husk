@@ -940,6 +940,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8738949590466489001, guid: 7618490b18c250b498db42655a5db558, type: 3}
   m_PrefabInstance: {fileID: 1052562188}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1064429203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3180304344100627515, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
+  m_PrefabInstance: {fileID: 5520136749125525366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1064429205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064429203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a23a0f82c1a0ea4f9b9b42caa84c2dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 0
 --- !u!1001 &1094293683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1722,7 +1740,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Husk Sprite Sheet
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5520136748732031284, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520136748732031284, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520136748732031284, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520136748732031285, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520136748732031285, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520136748732031286, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520136748732031287, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5520136748732031286, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
 --- !u!1001 &6685944488766282160
 PrefabInstance:
