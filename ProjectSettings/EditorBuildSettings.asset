@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DevMicah.unity
     guid: 4aaa6708c5308b247bbe7cac3321a26b
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: f1a26d7a8cbc4174d8bb3e4623fdad43
   m_configObjects: {}
