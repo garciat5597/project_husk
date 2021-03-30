@@ -221,7 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538840f9d62d6d3439f8f584f7949596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level 2
   titleMenuUI: {fileID: 908714514}
 --- !u!114 &722891703
 MonoBehaviour:

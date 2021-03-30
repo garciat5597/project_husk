@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class TitleMenu : MonoBehaviour
 {
-    [SerializeField] private string sceneName = "DevMicah";
     public GameObject titleMenuUI;
 
     // Start the game, moving to the first scene
@@ -13,7 +12,7 @@ public class TitleMenu : MonoBehaviour
     {
         Debug.Log("Moving to first scene");
         titleMenuUI.SetActive(false);
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        SceneManager.LoadScene("DevMicah", LoadSceneMode.Single);
     }
 
     // Quit out of the game
