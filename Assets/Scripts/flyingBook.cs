@@ -5,7 +5,8 @@ using UnityEngine;
 public class flyingBook : MonoBehaviour
 {
     public int flightSpeed=10;
-    public float flightTime = 1.5f;
+    public float flightTime;
+
     //public Controller player;
     public Rigidbody2D rb;
 
@@ -13,7 +14,6 @@ public class flyingBook : MonoBehaviour
     void Start()
     {
         this.rb.velocity = new Vector2(flightSpeed, 0);
-        Destroy(gameObject, flightTime);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -29,5 +29,17 @@ public class flyingBook : MonoBehaviour
             player.Hit();
             Destroy(gameObject);
         }
+    }
+
+    // Takes a time (float) when called and destroys book after set time
+    public void setFlightTime(float duration)
+    {
+        flightTime = duration;
+        StartCoroutine(Fly());
+    }
+    IEnumerator Fly()
+    {
+        yield return new WaitForSecondsRealtime(flightTime);
+        Destroy(gameObject);
     }
 }

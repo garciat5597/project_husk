@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1551787223629108170}
   - component: {fileID: 1551787223629108171}
   - component: {fileID: 1551787223629108168}
+  - component: {fileID: 3761568058766984345}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_LocalScale: {x: 0.67586, y: 0.6758601, z: 0.67586}
   m_Children: []
   m_Father: {fileID: 1551787223888974054}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1551787223629108170
 MeshFilter:
@@ -95,6 +96,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3761568058766984345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551787223629108174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09dbc07d2124c7418996ccdaae6f74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 1551787224866501078}
+  bookPrefab: {fileID: 0}
+  flightTime: 1.5
+  reloadTime: 1
 --- !u!1 &1551787223717828774
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +123,6 @@ GameObject:
   - component: {fileID: 1551787223717828769}
   - component: {fileID: 1551787223717828770}
   - component: {fileID: 1551787223717828771}
-  - component: {fileID: 1551787223717828768}
   m_Layer: 0
   m_Name: Bicep
   m_TagString: Untagged
@@ -177,21 +193,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1551787223717828768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551787223717828774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f09dbc07d2124c7418996ccdaae6f74e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 1551787224866501078}
-  bookPrefab: {fileID: 6109555105546894486, guid: 9b1417c1609519048a3786454fa535e2, type: 3}
-  reloadTime: 1
 --- !u!1 &1551787223759745052
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +204,6 @@ GameObject:
   - component: {fileID: 1551787223759745048}
   - component: {fileID: 1551787223759745049}
   - component: {fileID: 1551787223759745054}
-  - component: {fileID: 1551787223759745055}
   m_Layer: 0
   m_Name: Forearm
   m_TagString: Untagged
@@ -223,7 +223,7 @@ Transform:
   m_LocalScale: {x: 0.28865424, y: 0.9444394, z: 0.4187}
   m_Children: []
   m_Father: {fileID: 1551787223888974054}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -14.586}
 --- !u!33 &1551787223759745049
 MeshFilter:
@@ -274,21 +274,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1551787223759745055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551787223759745052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f09dbc07d2124c7418996ccdaae6f74e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 1551787224866501078}
-  bookPrefab: {fileID: 6109555105546894486, guid: 9b1417c1609519048a3786454fa535e2, type: 3}
-  reloadTime: 1
 --- !u!1 &1551787223888974055
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,8 +301,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1551787223759745048}
   - {fileID: 1551787223629108169}
+  - {fileID: 1551787223759745048}
   - {fileID: 1551787223717828769}
   - {fileID: 1551787224866501078}
   m_Father: {fileID: 0}

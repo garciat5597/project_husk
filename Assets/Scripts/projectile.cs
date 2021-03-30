@@ -5,7 +5,8 @@ using UnityEngine;
 public class projectile : MonoBehaviour
 {
     public Transform firePoint;
-    public GameObject bookPrefab;
+    public flyingBook bookPrefab;
+    public float flightTime = 1.5f;
     public int reloadTime = 1;
     private bool reloading = false;
 
@@ -22,10 +23,12 @@ public class projectile : MonoBehaviour
         }
     }
 
+    // When called: activates reload, makes an instance of a book, set's it's flight time, and then waits till the reload time is finished before deactivating reload
     IEnumerator Shoot()
     {
         reloading = true;
-        Instantiate(bookPrefab, firePoint.position, firePoint.rotation);
+        var projectile = Instantiate(bookPrefab, firePoint.position, firePoint.rotation);
+        projectile.setFlightTime(flightTime);
         yield return new WaitForSecondsRealtime(reloadTime);
         reloading = false;
     }
