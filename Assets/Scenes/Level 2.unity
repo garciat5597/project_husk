@@ -4574,7 +4574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1375117817525836444, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.7126
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1375117817525836444, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6320,6 +6320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Husk
       objectReference: {fileID: 0}
+    - target: {fileID: 5520136748732031285, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
 --- !u!1 &1806744132 stripped
@@ -6394,6 +6398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall wood
       objectReference: {fileID: 0}
+    - target: {fileID: 7925183848076343370, guid: 9f73b5eada696cc4eb3c3c94903ea22a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 6ed215066e059ca4c8107104b0902578, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f73b5eada696cc4eb3c3c94903ea22a, type: 3}
 --- !u!1 &1849010420

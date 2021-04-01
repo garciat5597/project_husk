@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 512753000}
-  husk: {fileID: 1515023438}
+  husk: {fileID: 1064429203}
   lerpXratio: 0.15
   lerpXdistance: 16
   cameraSpeed: 0.1
@@ -1405,11 +1405,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4700073265617455668, guid: 498aa1df681d3484c809c5e79e4d17f4, type: 3}
   m_PrefabInstance: {fileID: 1460538231}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1515023438 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3180304344100627515, guid: 60d8099f00fd16749a3e67a8bb48f9d9, type: 3}
-  m_PrefabInstance: {fileID: 5520136749125525366}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1742085628 stripped
 Transform:
