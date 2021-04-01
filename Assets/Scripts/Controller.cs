@@ -31,6 +31,8 @@ public class Controller : MonoBehaviour
     [SerializeField]
     private int direction = 1;
     bool addEntry = true;
+    GameObject lastTouchedWall = null;
+    Vector2 knockback;
 
     [SerializeField]
     private MotionStates currentState;
@@ -72,7 +74,7 @@ public class Controller : MonoBehaviour
         if (addEntry)
         {
             husk.addMoveEntry(gameObject.transform.position);
-            Debug.Log("Entry added, size: " + husk.waypoints.Count);
+            //Debug.Log("Entry added, size: " + husk.waypoints.Count);
             StartCoroutine(addHuskWaypoint());
         }
         
@@ -90,8 +92,12 @@ public class Controller : MonoBehaviour
     */
     public void HorizontalMove(float horizMove)
     {
-        Vector2 targetVel = new Vector2(horizMove * horizontalSpeed, rb.velocity.y);
-        rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
+        if (currentState != MotionStates.STUNNED)
+        {
+            Vector2 targetVel = new Vector2(horizMove * horizontalSpeed, rb.velocity.y);
+            rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
+        }
+
     }
 
     /*
@@ -101,7 +107,7 @@ public class Controller : MonoBehaviour
      */
     public void jump()
     {
-        if (numJumps > 0)
+        if (numJumps > 0 && currentState != MotionStates.STUNNED)
         {
             if (currentState == MotionStates.WALLCLING)
             {
@@ -130,7 +136,7 @@ public class Controller : MonoBehaviour
      */
     public void dash()
     {
-        if (canDash)
+        if (canDash && currentState != MotionStates.STUNNED)
         {
             // Change this so that accounts for player direction
             Vector2 dashForce = new Vector2(direction * dashSpeed, 0);
@@ -174,14 +180,15 @@ public class Controller : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // When touching the floor
-        if (collision.gameObject.tag == "Floor")
+        if (collision.gameObject.tag == "Floor" && transform.position.y > collision.gameObject.transform.position.y)
         {
             // Become grounded, refresh jumps.
             currentState = MotionStates.GROUNDED;
             numJumps = MAX_JUMPS;
+            lastTouchedWall = null;
         }
         // Activate wallcling
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Wall" && collision.gameObject != lastTouchedWall)
         {
             currentState = MotionStates.WALLCLING;
             rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -192,6 +199,8 @@ public class Controller : MonoBehaviour
                 numJumps++;
             }
             StartCoroutine(wallclingGravity());
+            // Prevents the player from clinging to the same wall twice in a row
+            lastTouchedWall = collision.gameObject;
         }
     }
 
@@ -225,5 +234,15 @@ public class Controller : MonoBehaviour
     public void Hit()
     {
         Debug.Log("Hit registered");
+        rb.velocity = Vector2.zero;
+        knockback = new Vector2(-direction * 1000, 500);
+        rb.AddForce(knockback);
+        currentState = MotionStates.STUNNED;
+    }
+
+    IEnumerator stunTimer()
+    {
+        yield return new WaitForSeconds(1.5f);
+        currentState = MotionStates.AIRBORNE;
     }
 }
