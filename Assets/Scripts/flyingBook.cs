@@ -39,7 +39,7 @@ public class flyingBook : MonoBehaviour
     }
     IEnumerator Fly()
     {
-        yield return new WaitForSecondsRealtime(flightTime);
+        yield return new WaitForSeconds(flightTime);
         Destroy(gameObject);
     }
 }

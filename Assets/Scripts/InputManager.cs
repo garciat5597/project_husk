@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     Controller movement;
-    HuskController husk;
+
     float horizMove = 0.0f;
     bool jump = false;
     bool dash = false;
@@ -13,7 +13,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         movement = GetComponent<Controller>();
-        husk = GameObject.FindGameObjectWithTag("Husk").GetComponent<HuskController>();
+
         if (movement)
         {
             Debug.Log("Controller loaded");
@@ -42,8 +42,6 @@ public class InputManager : MonoBehaviour
         {
             dash = true;
         }
-        // Wallrun dummied out currently
-        husk.addQueueEntry(new InputLog(horizMove, jump, dash, false));
     }
 
     private void FixedUpdate()

@@ -4,30 +4,26 @@ using UnityEngine;
 
 public class HuskController : MonoBehaviour
 {
+
+    /* Husk controller using new waypoint system 
+     * Husk will move to this waypoint at a constant speed matching the player's max run speed
+     * 
+     */
     float spawnTimer = 5.0f;
-    Queue<InputLog> inputs = new Queue<InputLog>();
+    public Queue<Vector3> waypoints = new Queue<Vector3>();
     Rigidbody2D rb;
-    //SpriteRenderer sprite;
+    float speed = 20f;
     BoxCollider2D collider;
     GameObject player;
     [SerializeField]
     bool canMove = false;
-    Controller movement;
+    Vector3 moveTarget;
 
-    // Movement flags
-    float horizMove = 0.0f;
-    bool jump = false;
-    bool dash = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //sprite = GetComponent<SpriteRenderer>();
         collider = GetComponent<BoxCollider2D>();
-        if (!movement)
-        {
-            movement = GetComponent<Controller>();
-        }
         // Get player
         if (!player)
         {
@@ -40,72 +36,51 @@ public class HuskController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If husk is allowed to move, start pulling from the queue
-        if (canMove)
-        {
-            // Check that the Husk queue is not empty
-            // TODO: Check that the player is not stunned
-            // TODO: If the player is still or stunned, continue the Husk forward towards them
-            if (inputs.Count > 0)
-            {
-
-                // Raise movement flags based on dequeued input
-                InputLog currentInputs = inputs.Dequeue();
-                if (currentInputs.directionalInput < 0)
-                {
-                    movement.setDirection(-1);
-                    horizMove = currentInputs.directionalInput;
-                }
-                else if (currentInputs.directionalInput > 0)
-                {
-                    movement.setDirection(1);
-                    horizMove = currentInputs.directionalInput;
-                }
-
-                if (currentInputs.jumpPressed)
-                {
-                    jump = true;
-                }
-
-                if (currentInputs.dashPressed)
-                {
-                    dash = true;
-                }
-            }
-            
-        }
+        
+        
     }
 
     private void FixedUpdate()
     {
-        // Update in the controller
-        movement.HorizontalMove(horizMove);
-        horizMove = 0.0f;
-        if (dash)
+        if (canMove)
         {
-            movement.dash();
-            dash = false;
+            if (waypoints.Count > 0)
+            {
+                // If the husk is close to it's current destination, it picks a new one
+                float distanceFromWaypoint = Vector3.Distance(transform.position, moveTarget);
+                if (distanceFromWaypoint <= 0.5f)
+                {
+
+                    moveTarget = waypoints.Dequeue();
+                }
+
+
+            }
+
+            // Move towards location
+            Vector3 direction = new Vector3(moveTarget.x - transform.position.x, moveTarget.y - transform.position.y, 0f);
+            Debug.Log("Current pos: " + transform.position + " | Target pos: " + moveTarget + " | Distance: " + Vector3.Distance(moveTarget, transform.position));
+            direction = direction.normalized;
+
+            transform.position += direction * speed * Time.deltaTime;
         }
-        if (jump)
-        {
-            movement.jump();
-            jump = false;
-        }
+
+
     }
+
 
     IEnumerator spawnDelay()
     {
         yield return new WaitForSeconds(spawnTimer);
         // Wake up husk
         collider.enabled = true;
-        rb.constraints = RigidbodyConstraints2D.None;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        //sprite.enabled = true;
         canMove = true;
+        moveTarget = waypoints.Dequeue();
+        Debug.Log("Initial target: " + moveTarget);
     }
 
-    public void addQueueEntry(InputLog nInput)
+    public void addMoveEntry(Vector3 move)
     {
-        inputs.Enqueue(nInput);
+        waypoints.Enqueue(move);
     }
 }

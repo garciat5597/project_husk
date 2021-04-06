@@ -29,7 +29,7 @@ public class projectile : MonoBehaviour
         reloading = true;
         var projectile = Instantiate(bookPrefab, firePoint.position, firePoint.rotation);
         projectile.setFlightTime(flightTime);
-        yield return new WaitForSecondsRealtime(reloadTime);
+        yield return new WaitForSeconds(reloadTime);
         reloading = false;
     }
 }
