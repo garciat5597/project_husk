@@ -30,8 +30,8 @@ public class CameraMovement : MonoBehaviour
 
         // get magnitudes between player and camera, and player and husk
         Vector2 diffPlayerCamera = new Vector2(player.transform.position.x - target.x, player.transform.position.y - target.y);
-        Debug.Log("target" + target);
-        Debug.Log("diffPlayerCamera: " + diffPlayerCamera);
+        //Debug.Log("target" + target);
+        //Debug.Log("diffPlayerCamera: " + diffPlayerCamera);
         Vector2 diffPlayerHusk = new Vector2(player.transform.position.x - husk.transform.position.x, player.transform.position.y - husk.transform.position.y);
 
         CameraMoveX();
@@ -64,7 +64,7 @@ public class CameraMovement : MonoBehaviour
     // Move camera vertically if Player crosses upper or lower boundary
     void CameraMoveY(Vector2 diff)
     {
-        Debug.Log("ydiff: " + diff.y);
+        //Debug.Log("ydiff: " + diff.y);
         // if player is above camera
         if (diff.y > vertBoundUpper)
         {

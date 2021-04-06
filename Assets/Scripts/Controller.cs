@@ -10,6 +10,7 @@ public class Controller : MonoBehaviour
      */
     private Rigidbody2D rb;
     HuskController husk;
+    GroundDetection detector;
 
     public float horizontalSpeed = 25.0f;
     [SerializeField]
@@ -50,6 +51,7 @@ public class Controller : MonoBehaviour
     void Start()
     {
         husk = GameObject.FindGameObjectWithTag("Husk").GetComponent<HuskController>();
+        detector = GetComponentInChildren<GroundDetection>();
         // Load the character's rigidbody
         if (!rb)
         {
@@ -63,7 +65,7 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     // Physics logic should be updated here
@@ -78,7 +80,14 @@ public class Controller : MonoBehaviour
             //Debug.Log("Entry added, size: " + husk.waypoints.Count);
             StartCoroutine(addHuskWaypoint());
         }
-        
+
+        if (detector.getGrounded())
+        {
+            // Become grounded, refresh jumps.
+            currentState = MotionStates.GROUNDED;
+            numJumps = MAX_JUMPS;
+            lastTouchedWall = null;
+        }
     }
 
     public void setDirection(int nDirection)
@@ -113,7 +122,7 @@ public class Controller : MonoBehaviour
             if (currentState == MotionStates.WALLCLING)
             {
                 // Special jump arc out of wallcling
-                rb.AddForce(new Vector2(-direction * (jumpForce / 2), jumpForce));
+                rb.AddForce(new Vector2(-direction * (jumpForce * 0.8f), jumpForce));
             }
             else
             {
@@ -177,19 +186,19 @@ public class Controller : MonoBehaviour
         addEntry = true;
     }
 
-    // Collision handler
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        // When touching the floor
-        if (collision.gameObject.tag == "Floor" && transform.position.y > collision.gameObject.transform.position.y)
-        {
-            // Become grounded, refresh jumps.
-            currentState = MotionStates.GROUNDED;
-            numJumps = MAX_JUMPS;
-            lastTouchedWall = null;
-        }
+    //// Collision handler
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    // When touching the floor
+    //    if (collision.gameObject.tag == "Floor" && rb.velocity.y <= 0)
+    //    {
+    //        // Become grounded, refresh jumps.
+    //        currentState = MotionStates.GROUNDED;
+    //        numJumps = MAX_JUMPS;
+    //        lastTouchedWall = null;
+    //    }
        
-    }
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -206,7 +215,7 @@ public class Controller : MonoBehaviour
             }
             StartCoroutine(wallclingGravity());
             // Prevents the player from clinging to the same wall twice in a row
-            lastTouchedWall = collision.gameObject;
+            // lastTouchedWall = collision.gameObject;
         }
     }
 
