@@ -11,13 +11,13 @@ public class Controller : MonoBehaviour
     private Rigidbody2D rb;
     HuskController husk;
 
-    public float horizontalSpeed = 30.0f;
+    public float horizontalSpeed = 25.0f;
     [SerializeField]
     private Vector2 currentVelocity = Vector2.zero;
     [SerializeField]
-    private float jumpForce = 1500.0f;
+    private float jumpForce = 1200.0f;
     [SerializeField]
-    private float dashSpeed = 1500.0f;
+    private float dashSpeed = 1000.0f;
     [SerializeField]
     private float gravity;
     [SerializeField]
@@ -177,7 +177,7 @@ public class Controller : MonoBehaviour
     }
 
     // Collision handler
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         // When touching the floor
         if (collision.gameObject.tag == "Floor" && transform.position.y > collision.gameObject.transform.position.y)
@@ -187,6 +187,11 @@ public class Controller : MonoBehaviour
             numJumps = MAX_JUMPS;
             lastTouchedWall = null;
         }
+       
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         // Activate wallcling
         if (collision.gameObject.tag == "Wall" && collision.gameObject != lastTouchedWall)
         {
