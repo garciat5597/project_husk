@@ -33,6 +33,7 @@ public class Controller : MonoBehaviour
     bool addEntry = true;
     GameObject lastTouchedWall = null;
     Vector2 knockback;
+    bool isDead = false;
 
     [SerializeField]
     private MotionStates currentState;
@@ -209,6 +210,15 @@ public class Controller : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Husk")
+        {
+            // Die
+            isDead = true;
+        }
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         // When leaving the ground, check if jumps > 1. If so, reduce to 1
@@ -249,5 +259,10 @@ public class Controller : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         currentState = MotionStates.AIRBORNE;
+    }
+
+    public bool getDead()
+    {
+        return isDead;
     }
 }
