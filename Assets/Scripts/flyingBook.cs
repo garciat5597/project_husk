@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class flyingBook : MonoBehaviour
 {
-    public int flightSpeed=10;
+    public int flightSpeed=10, flightDirection=1;
     public float flightTime;
+    
 
     //public Controller player;
     public Rigidbody2D rb;
@@ -13,7 +14,7 @@ public class flyingBook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.rb.velocity = new Vector2(flightSpeed, 0);
+        this.rb.velocity = new Vector2(flightSpeed, 0) * flightDirection;
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -26,8 +27,17 @@ public class flyingBook : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Controller player = other.gameObject.GetComponent<Controller>();
-            player.Hit();
+            player.Hit(flightDirection);
             Destroy(gameObject);
+        }
+    }
+
+    // Flips flight direction
+    public void flipFlight(bool goLeft)
+    {
+        if (goLeft)
+        {
+            flightDirection=-1;
         }
     }
 
