@@ -6064,6 +6064,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Doctor
       objectReference: {fileID: 0}
+    - target: {fileID: 7937367581706011497, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7943778440266846755, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
       propertyPath: dashSpeed
       value: 1000
@@ -6074,7 +6078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7943778440266846755, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
       propertyPath: horizontalSpeed
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7943778441026943661, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
       propertyPath: m_IsActive

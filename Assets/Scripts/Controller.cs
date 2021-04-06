@@ -245,11 +245,11 @@ public class Controller : MonoBehaviour
         rb.gravityScale = gravity;
     }
 
-    public void Hit()
+    public void Hit(int projectileDirection)
     {
         Debug.Log("Hit registered");
         rb.velocity = Vector2.zero;
-        knockback = new Vector2(-direction * 1000, 500);
+        knockback = new Vector2(projectileDirection * 1000, 500);
         rb.AddForce(knockback);
         currentState = MotionStates.STUNNED;
     }

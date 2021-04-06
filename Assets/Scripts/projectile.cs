@@ -9,6 +9,7 @@ public class projectile : MonoBehaviour
     public float flightTime = 1.5f;
     public int reloadTime = 1;
     private bool reloading = false;
+    public bool flyLeft = false;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class projectile : MonoBehaviour
     {
         reloading = true;
         var projectile = Instantiate(bookPrefab, firePoint.position, firePoint.rotation);
+        projectile.flipFlight(flyLeft);
         projectile.setFlightTime(flightTime);
         yield return new WaitForSeconds(reloadTime);
         reloading = false;
