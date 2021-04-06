@@ -12,7 +12,7 @@ public class HuskController : MonoBehaviour
     float spawnTimer = 5.0f;
     public Queue<Vector3> waypoints = new Queue<Vector3>();
     Rigidbody2D rb;
-    float speed = 20f;
+    float speed = 17f;
     BoxCollider2D collider;
     GameObject player;
     [SerializeField]
