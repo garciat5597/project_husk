@@ -1,0 +1,876 @@
+fileFormatVersion: 2
+guid: 1e1d32de59e43b349b4e756e910f7b3a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6144226805028789928
+    second: GDD_TilePieces_0
+  - first:
+      213: 7150765660228399515
+    second: GDD_TilePieces_1
+  - first:
+      213: 3053155406073946828
+    second: GDD_TilePieces_2
+  - first:
+      213: 3397497066416318457
+    second: GDD_TilePieces_3
+  - first:
+      213: -429275618110934601
+    second: GDD_TilePieces_4
+  - first:
+      213: 2932847934049950809
+    second: GDD_TilePieces_5
+  - first:
+      213: 369686224998694654
+    second: GDD_TilePieces_6
+  - first:
+      213: -883093399170473522
+    second: GDD_TilePieces_7
+  - first:
+      213: 7065400062785739242
+    second: GDD_TilePieces_8
+  - first:
+      213: 7049968825282492253
+    second: GDD_TilePieces_9
+  - first:
+      213: 6657037805879956270
+    second: GDD_TilePieces_10
+  - first:
+      213: -2247897724575453795
+    second: GDD_TilePieces_11
+  - first:
+      213: -537432474183787220
+    second: GDD_TilePieces_12
+  - first:
+      213: -8088180758259689162
+    second: GDD_TilePieces_13
+  - first:
+      213: 636945685806974600
+    second: GDD_TilePieces_14
+  - first:
+      213: 4428845127697063256
+    second: GDD_TilePieces_15
+  - first:
+      213: 7329075797865857140
+    second: GDD_TilePieces_16
+  - first:
+      213: 2901442863647430486
+    second: GDD_TilePieces_17
+  - first:
+      213: 2859455268064892904
+    second: GDD_TilePieces_18
+  - first:
+      213: -4439486174663835300
+    second: GDD_TilePieces_19
+  - first:
+      213: 2834716804688557119
+    second: GDD_TilePieces_20
+  - first:
+      213: -7360998576716314587
+    second: GDD_TilePieces_21
+  - first:
+      213: 5486542196548767525
+    second: GDD_TilePieces_22
+  - first:
+      213: -7025672437882541456
+    second: GDD_TilePieces_23
+  - first:
+      213: 2124592802437489792
+    second: GDD_TilePieces_24
+  - first:
+      213: -1547504793010405258
+    second: GDD_TilePieces_25
+  - first:
+      213: -6049187769010553132
+    second: GDD_TilePieces_26
+  - first:
+      213: -2115725922844990932
+    second: GDD_TilePieces_27
+  - first:
+      213: 147070581716315096
+    second: GDD_TilePieces_28
+  - first:
+      213: 3276780961781597355
+    second: GDD_TilePieces_29
+  - first:
+      213: -6110778784405691033
+    second: GDD_TilePieces_30
+  - first:
+      213: -8167817522365324572
+    second: GDD_TilePieces_31
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GDD_TilePieces_0
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 4384
+        width: 530
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae9c25c9bda44550800000000000000
+      internalID: 6144226805028789928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_1
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 4381
+        width: 530
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b91b9f94b7f9c3360800000000000000
+      internalID: 7150765660228399515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_2
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 4102
+        width: 156
+        height: 478
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2e91f5aacfe5a20800000000000000
+      internalID: 3053155406073946828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_3
+      rect:
+        serializedVersion: 2
+        x: 2162
+        y: 4102
+        width: 158
+        height: 475
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f72d29c495562f20800000000000000
+      internalID: 3397497066416318457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_4
+      rect:
+        serializedVersion: 2
+        x: 3003
+        y: 4345
+        width: 143
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b1f2c78918ea0af0800000000000000
+      internalID: -429275618110934601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_5
+      rect:
+        serializedVersion: 2
+        x: 3516
+        y: 4340
+        width: 146
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95c194938a193b820800000000000000
+      internalID: 2932847934049950809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_6
+      rect:
+        serializedVersion: 2
+        x: 3829
+        y: 4117
+        width: 982
+        height: 475
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efef667b9a3612500800000000000000
+      internalID: 369686224998694654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_7
+      rect:
+        serializedVersion: 2
+        x: 4910
+        y: 4398
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec1a3f67b3f9eb3f0800000000000000
+      internalID: -883093399170473522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_8
+      rect:
+        serializedVersion: 2
+        x: 4931
+        y: 4117
+        width: 984
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae9dd5a4ce75d0260800000000000000
+      internalID: 7065400062785739242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_9
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 4061
+        width: 530
+        height: 270
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d577a845b4586d160800000000000000
+      internalID: 7049968825282492253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_10
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 4055
+        width: 533
+        height: 273
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2312db2d9c826c50800000000000000
+      internalID: 6657037805879956270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_11
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 3944
+        width: 196
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d654bedecddc0e0800000000000000
+      internalID: -2247897724575453795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_12
+      rect:
+        serializedVersion: 2
+        x: 3466
+        y: 3944
+        width: 199
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2d148d1308aa88f0800000000000000
+      internalID: -537432474183787220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_13
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 3657
+        width: 695
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63918c0147201cf80800000000000000
+      internalID: -8088180758259689162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_14
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 3666
+        width: 697
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8860ebff9b2e6d800800000000000000
+      internalID: 636945685806974600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_15
+      rect:
+        serializedVersion: 2
+        x: 3006
+        y: 3534
+        width: 146
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85d5a99bd2b667d30800000000000000
+      internalID: 4428845127697063256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_16
+      rect:
+        serializedVersion: 2
+        x: 3516
+        y: 3525
+        width: 146
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47005b76b9b16b560800000000000000
+      internalID: 7329075797865857140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_17
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 2763
+        width: 2315
+        height: 483
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 60}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6571cc779eef34820800000000000000
+      internalID: 2901442863647430486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_18
+      rect:
+        serializedVersion: 2
+        x: 3003
+        y: 3135
+        width: 196
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e790209a63dea720800000000000000
+      internalID: 2859455268064892904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_19
+      rect:
+        serializedVersion: 2
+        x: 3469
+        y: 3132
+        width: 196
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5187e578d6c362c0800000000000000
+      internalID: -4439486174663835300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_20
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 2564
+        width: 2053
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f34ba463aefe65720800000000000000
+      internalID: 2834716804688557119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_21
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 1409
+        width: 1099
+        height: 1099
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5280ba27bca78d990800000000000000
+      internalID: -7360998576716314587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_22
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 1418
+        width: 1098
+        height: 1105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52f0b7e0f0d142c40800000000000000
+      internalID: 5486542196548767525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_23
+      rect:
+        serializedVersion: 2
+        x: 3056
+        y: 1424
+        width: 1098
+        height: 1105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a22cf242ccf7e90800000000000000
+      internalID: -7025672437882541456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_24
+      rect:
+        serializedVersion: 2
+        x: 4307
+        y: 1363
+        width: 1098
+        height: 1098
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08463a1b5e11c7d10800000000000000
+      internalID: 2124592802437489792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_25
+      rect:
+        serializedVersion: 2
+        x: 5531
+        y: 41
+        width: 144
+        height: 2054
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670866cf698268ae0800000000000000
+      internalID: -1547504793010405258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_26
+      rect:
+        serializedVersion: 2
+        x: 5783
+        y: 47
+        width: 144
+        height: 2039
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4defc7826c7fc0ca0800000000000000
+      internalID: -6049187769010553132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_27
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 1213
+        width: 2039
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c222db69b7e63a2e0800000000000000
+      internalID: -2115725922844990932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_28
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 62
+        width: 1093
+        height: 1092
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8db6c143aef7a0200800000000000000
+      internalID: 147070581716315096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_29
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 56
+        width: 1092
+        height: 1096
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba441c17ce6797d20800000000000000
+      internalID: 3276780961781597355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_30
+      rect:
+        serializedVersion: 2
+        x: 3032
+        y: 53
+        width: 1093
+        height: 1099
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76561866217223ba0800000000000000
+      internalID: -6110778784405691033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDD_TilePieces_31
+      rect:
+        serializedVersion: 2
+        x: 4313
+        y: 88
+        width: 1092
+        height: 1093
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e224350d3516ae80800000000000000
+      internalID: -8167817522365324572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
