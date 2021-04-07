@@ -35,6 +35,7 @@ public class Controller : MonoBehaviour
     GameObject lastTouchedWall = null;
     Vector2 knockback;
     bool isDead = false;
+    bool canMoveHoriz = true;
 
     [SerializeField]
     private MotionStates currentState;
@@ -102,7 +103,7 @@ public class Controller : MonoBehaviour
     */
     public void HorizontalMove(float horizMove)
     {
-        if (currentState != MotionStates.STUNNED)
+        if (currentState != MotionStates.STUNNED && canMoveHoriz)
         {
             Vector2 targetVel = new Vector2(horizMove * horizontalSpeed, rb.velocity.y);
             rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
@@ -121,8 +122,11 @@ public class Controller : MonoBehaviour
         {
             if (currentState == MotionStates.WALLCLING)
             {
+                canMoveHoriz = false;
+                StartCoroutine(postWallclingTimer());
                 // Special jump arc out of wallcling
                 rb.AddForce(new Vector2(-direction * (jumpForce * 0.8f), jumpForce));
+
             }
             else
             {
@@ -206,7 +210,7 @@ public class Controller : MonoBehaviour
         if (collision.gameObject.tag == "Wall" && collision.gameObject != lastTouchedWall)
         {
             currentState = MotionStates.WALLCLING;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.velocity = new Vector2(0, 0);
             rb.gravityScale = 0f;
             // Recover one jump if the player has none when they wallcling
             if (numJumps < 1)
@@ -262,6 +266,13 @@ public class Controller : MonoBehaviour
         knockback = new Vector2(projectileDirection * 1000, 500);
         rb.AddForce(knockback);
         currentState = MotionStates.STUNNED;
+    }
+
+    IEnumerator postWallclingTimer()
+    {
+        yield return new WaitForSeconds(0.2f);
+        canMoveHoriz = true;
+
     }
 
     IEnumerator stunTimer()
