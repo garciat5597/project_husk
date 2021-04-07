@@ -34,6 +34,8 @@ public class Controller : MonoBehaviour
     bool addEntry = true;
     GameObject lastTouchedWall = null;
     Vector2 knockback;
+    bool isDead = false;
+    bool canMoveHoriz = true;
 
     [SerializeField]
     private MotionStates currentState;
@@ -101,7 +103,7 @@ public class Controller : MonoBehaviour
     */
     public void HorizontalMove(float horizMove)
     {
-        if (currentState != MotionStates.STUNNED)
+        if (currentState != MotionStates.STUNNED && canMoveHoriz)
         {
             Vector2 targetVel = new Vector2(horizMove * horizontalSpeed, rb.velocity.y);
             rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
@@ -120,8 +122,11 @@ public class Controller : MonoBehaviour
         {
             if (currentState == MotionStates.WALLCLING)
             {
+                canMoveHoriz = false;
+                StartCoroutine(postWallclingTimer());
                 // Special jump arc out of wallcling
                 rb.AddForce(new Vector2(-direction * (jumpForce * 0.8f), jumpForce));
+
             }
             else
             {
@@ -205,16 +210,26 @@ public class Controller : MonoBehaviour
         if (collision.gameObject.tag == "Wall" && collision.gameObject != lastTouchedWall)
         {
             currentState = MotionStates.WALLCLING;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.velocity = new Vector2(0, 0);
             rb.gravityScale = 0f;
             // Recover one jump if the player has none when they wallcling
             if (numJumps < 1)
             {
                 numJumps++;
             }
+            // TODO: Look into this. The coroutine might be causing later wallclings to expire
             StartCoroutine(wallclingGravity());
             // Prevents the player from clinging to the same wall twice in a row
             // lastTouchedWall = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Husk")
+        {
+            // Die
+            isDead = true;
         }
     }
 
@@ -254,9 +269,21 @@ public class Controller : MonoBehaviour
         currentState = MotionStates.STUNNED;
     }
 
+    IEnumerator postWallclingTimer()
+    {
+        yield return new WaitForSeconds(0.2f);
+        canMoveHoriz = true;
+
+    }
+
     IEnumerator stunTimer()
     {
         yield return new WaitForSeconds(1.5f);
         currentState = MotionStates.AIRBORNE;
+    }
+
+    public bool getDead()
+    {
+        return isDead;
     }
 }

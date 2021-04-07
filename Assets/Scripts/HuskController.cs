@@ -59,7 +59,6 @@ public class HuskController : MonoBehaviour
 
             // Move towards location
             Vector3 direction = new Vector3(moveTarget.x - transform.position.x, moveTarget.y - transform.position.y, 0f);
-            Debug.Log("Current pos: " + transform.position + " | Target pos: " + moveTarget + " | Distance: " + Vector3.Distance(moveTarget, transform.position));
             direction = direction.normalized;
 
             transform.position += direction * speed * Time.deltaTime;
@@ -74,7 +73,7 @@ public class HuskController : MonoBehaviour
         yield return new WaitForSeconds(spawnTimer);
         // Wake up husk
         collider.enabled = true;
-        canMove = true;
+        //canMove = true;
         moveTarget = waypoints.Dequeue();
         Debug.Log("Initial target: " + moveTarget);
     }
