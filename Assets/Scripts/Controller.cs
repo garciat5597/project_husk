@@ -217,6 +217,7 @@ public class Controller : MonoBehaviour
             {
                 numJumps++;
             }
+            // TODO: Look into this. The coroutine might be causing later wallclings to expire
             StartCoroutine(wallclingGravity());
             // Prevents the player from clinging to the same wall twice in a row
             // lastTouchedWall = collision.gameObject;
