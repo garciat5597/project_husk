@@ -3533,7 +3533,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6ed215066e059ca4c8107104b0902578, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -7351,6 +7351,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7943778440266846749, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943778440266846752, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7943778440266846755, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
       propertyPath: dashSpeed
       value: 1000
@@ -7383,6 +7391,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.098039225
       objectReference: {fileID: 0}
+    - target: {fileID: 8245648908503297367, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
 --- !u!1 &1435975660 stripped
@@ -7390,6 +7402,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7937367581706011497, guid: b14ce1bcdadc99f43ba8cd0ee0c0ed99, type: 3}
   m_PrefabInstance: {fileID: 1435975659}
   m_PrefabAsset: {fileID: 0}
+--- !u!70 &1435975661
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435975660}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.08453369, y: 7.100235}
+  m_Size: {x: 2.5427246, y: 11.933197}
+  m_Direction: 0
 --- !u!1001 &1437958373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10828,7 +10856,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6ed215066e059ca4c8107104b0902578, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
