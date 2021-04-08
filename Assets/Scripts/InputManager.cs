@@ -23,25 +23,34 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizMove = Input.GetAxisRaw("Horizontal");
-        if (horizMove < 0)
+        // Check for a dead player character
+        if (!movement.getDead())
         {
-            movement.setDirection(-1);
-        }
-        else if (horizMove > 0)
-        {
-            movement.setDirection(1);
-        }
+            // movement on the X axis
+            horizMove = Input.GetAxisRaw("Horizontal");
+            if (horizMove < 0)
+            {
+                movement.setDirection(-1);
+            }
+            else if (horizMove > 0)
+            {
+                movement.setDirection(1);
+            }
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            jump = true;
-        }
+            // Jump
+            if (Input.GetButtonDown("Jump"))
+            {
+                jump = true;
+            }
 
-        if (Input.GetButtonDown("Fire2"))
-        {
-            dash = true;
+            // Dash
+            if (Input.GetButtonDown("Fire2"))
+            {
+                dash = true;
+            }
         }
+       
+
     }
 
     private void FixedUpdate()
