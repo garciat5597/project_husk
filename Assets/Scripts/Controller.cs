@@ -124,6 +124,7 @@ public class Controller : MonoBehaviour
             {
                 canMoveHoriz = false;
                 StartCoroutine(postWallclingTimer());
+                StopCoroutine("wallclingGravity");
                 // Special jump arc out of wallcling
                 rb.AddForce(new Vector2(-direction * (jumpForce * 0.8f), jumpForce));
 
@@ -190,19 +191,6 @@ public class Controller : MonoBehaviour
         addEntry = true;
     }
 
-    //// Collision handler
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-    //    // When touching the floor
-    //    if (collision.gameObject.tag == "Floor" && rb.velocity.y <= 0)
-    //    {
-    //        // Become grounded, refresh jumps.
-    //        currentState = MotionStates.GROUNDED;
-    //        numJumps = MAX_JUMPS;
-    //        lastTouchedWall = null;
-    //    }
-       
-    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -218,7 +206,7 @@ public class Controller : MonoBehaviour
                 numJumps++;
             }
             // TODO: Look into this. The coroutine might be causing later wallclings to expire
-            StartCoroutine(wallclingGravity());
+            StartCoroutine("wallclingGravity");
             // Prevents the player from clinging to the same wall twice in a row
             // lastTouchedWall = collision.gameObject;
         }
