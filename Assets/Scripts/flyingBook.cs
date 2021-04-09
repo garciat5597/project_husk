@@ -15,12 +15,12 @@ public class flyingBook : MonoBehaviour
     void Start()
     {
         this.rb.velocity = new Vector2(flightSpeed, 0) * flightDirection;
+        this.rb.rotation -= 10f;
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        float temp = rb.rotation;
-        this.rb.rotation-=0.5f;
+        
     }
     void OnTriggerEnter2D(Collider2D other)
     {
