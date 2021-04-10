@@ -13,6 +13,7 @@ public class SlimeScript : MonoBehaviour
     private void Start()
     {
         Debug.Log("pre-play drag: " + player.drag);
+        player = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
     }
     void OnTriggerStay2D(Collider2D other)
     { 

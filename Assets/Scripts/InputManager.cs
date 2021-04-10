@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    /*
+     * Non-movement character functionality
+     */
     Controller movement;
 
     float horizMove = 0.0f;
