@@ -34,7 +34,7 @@ public class SlimeScript : MonoBehaviour
     IEnumerator slimeHazzardEffect()
     {
         yield return new WaitForSeconds(effectDuration);
-        player.drag = 1;
+        player.drag = 2;
         Debug.Log("Status Removed " + player.drag);
     }
 }
