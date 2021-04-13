@@ -45,6 +45,10 @@ public class PauseMenu : MonoBehaviour
     public void Restart ()
     {
         Debug.Log("*TODO* Restarting Level...");
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        IsPaused = false;
+        SceneManager.LoadScene("Level", LoadSceneMode.Single);
         // resume: timescale to 1, unpause, etc
         // reset player position
         // reset shadow position

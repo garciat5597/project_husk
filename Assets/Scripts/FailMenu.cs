@@ -9,6 +9,14 @@ public class FailMenu : MonoBehaviour
     public Controller playerController;
     public GameObject failMenuUI;
 
+    private void Start()
+    {
+        if (!playerController)
+        {
+            playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<Controller>();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -22,14 +30,17 @@ public class FailMenu : MonoBehaviour
     void activateFailScreen()
     {
         failMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         Failed = true;
     }
 
     // Restart the level
     public void Restart()
     {
-        Debug.Log("*TODO* Restarting Level...");
+        failMenuUI.SetActive(false);
+        Failed = false;
+        //Time.timeScale = 1f;
+        SceneManager.LoadScene("Level", LoadSceneMode.Single);
         // resume: timescale to 1, unpause, etc
         // reset player position
         // reset shadow position
@@ -39,9 +50,8 @@ public class FailMenu : MonoBehaviour
     // return to the main menu
     public void Quit()
     {
-        Debug.Log("*TODO* Quitting to Menu...");
         failMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         Failed = false;
         SceneManager.LoadScene("TitleMenu", LoadSceneMode.Single);
     }

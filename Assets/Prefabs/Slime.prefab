@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8619233608290704001}
   - component: {fileID: 6557623089508793234}
   - component: {fileID: 1921257680919995855}
+  - component: {fileID: 7916221660698295496}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -96,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3995948a30e459458cf7d58e1c8b662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectDuration: 1.5
-  effectStrength: 25
+  effectDuration: 1
+  effectStrength: 10
   player: {fileID: 0}
 --- !u!95 &1921257680919995855
 Animator:
@@ -118,3 +119,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &7916221660698295496
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557623089508793233}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.28, y: 1.51}
+    newSize: {x: 2.28, y: 1.51}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.1248331, y: 0.04}
+      - {x: 1.1334176, y: 0.03758338}
+      - {x: 1.1309632, y: 0.83282566}
+      - {x: 0.8006296, y: 1.3201886}
+      - {x: -0.044612765, y: 1.6049842}
+      - {x: -0.7467334, y: 1.3453178}
+      - {x: -1.1248014, y: 0.86643165}
