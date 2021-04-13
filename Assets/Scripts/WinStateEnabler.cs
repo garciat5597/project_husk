@@ -20,6 +20,7 @@ public class WinStateEnabler : MonoBehaviour
             if (winTrigger)
             {
                 winTrigger.SetActive(true);
+                gameObject.SetActive(false);
             }
         }
     }
