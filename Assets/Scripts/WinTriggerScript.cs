@@ -12,7 +12,7 @@ public class WinTriggerScript : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Debug.Log("Win trigger tripped");
-            SceneManager.LoadScene("Credits");
+            SceneManager.LoadScene("Credits", LoadSceneMode.Single);
         }
     }
 }
