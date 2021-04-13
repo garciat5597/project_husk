@@ -2891,6 +2891,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1435975665}
+    - target: {fileID: 6557623089508793234, guid: efad41d23b01181488a766509ac618b6, type: 3}
+      propertyPath: effectDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557623089508793234, guid: efad41d23b01181488a766509ac618b6, type: 3}
+      propertyPath: effectStrength
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efad41d23b01181488a766509ac618b6, type: 3}
 --- !u!4 &536243318 stripped
