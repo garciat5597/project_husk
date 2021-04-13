@@ -9,6 +9,14 @@ public class FailMenu : MonoBehaviour
     public Controller playerController;
     public GameObject failMenuUI;
 
+    private void Start()
+    {
+        if (!playerController)
+        {
+            playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<Controller>();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

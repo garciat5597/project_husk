@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinTriggerScript : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class WinTriggerScript : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Debug.Log("Win trigger tripped");
+            SceneManager.LoadScene("Credits");
         }
     }
 }
