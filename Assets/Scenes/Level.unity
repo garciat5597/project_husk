@@ -9076,8 +9076,8 @@ MonoBehaviour:
   lerpXratio: 0.15
   lerpXdistance: 12
   cameraSpeed: 0.15
-  vertBoundUpper: 2
-  vertBoundLower: 3.5
+  vertBoundUpper: 1.5
+  vertBoundLower: 3
   clampRadius: 2.5
 --- !u!1001 &800372504
 PrefabInstance:
