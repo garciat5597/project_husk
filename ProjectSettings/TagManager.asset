@@ -41,7 +41,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: stairs
+  - name: BG
     uniqueID: 871369789
     locked: 0
   - name: Default
