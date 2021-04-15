@@ -186,6 +186,7 @@ public class Controller : MonoBehaviour
             // Pause the player at their current y axis value
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.gravityScale = 0f;
+            anims.SetTrigger("Dash");
             rb.AddForce(dashForce);
             canDash = false;
             StartCoroutine(dashCooldown());
