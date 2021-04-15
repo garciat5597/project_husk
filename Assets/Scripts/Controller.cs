@@ -149,7 +149,17 @@ public class Controller : MonoBehaviour
         {
             Vector2 targetVel = new Vector2(horizMove * horizontalSpeed, rb.velocity.y);
             rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
+
+            if (!anims.GetBool("isRunning") && horizMove != 0)
+            {
+                anims.SetBool("isRunning", true);
+            }
+            else if (anims.GetBool("isRunning") && horizMove == 0)
+            {
+                anims.SetBool("isRunning", false);
+            }
         }
+        
 
     }
 
