@@ -11,6 +11,8 @@ public class Controller : MonoBehaviour
     private Rigidbody2D rb;
     HuskController husk;
     GroundDetection detector;
+    Animator anims;
+    SpriteRenderer sprite;
 
     public float horizontalSpeed = 25.0f;
     [SerializeField]
@@ -59,6 +61,11 @@ public class Controller : MonoBehaviour
         {
             rb = GetComponent<Rigidbody2D>();
         }
+        if (!anims)
+        {
+            anims = GetComponent<Animator>();
+        }
+
         gravity = rb.gravityScale;
         currentState = MotionStates.GROUNDED;
 
@@ -83,6 +90,46 @@ public class Controller : MonoBehaviour
             // Become grounded, refresh jumps.
             currentState = MotionStates.GROUNDED;
             numJumps = MAX_JUMPS;
+        }
+
+        if (direction > 0 && transform.localScale.x < 0)
+        {
+            flipX();
+        }
+        else if (direction < 0 && transform.localScale.x > 0)
+        {
+            flipX();
+        }
+
+        // Adjust animator bols based on motion state
+        switch (currentState)
+        {
+            case MotionStates.GROUNDED:
+                // If player is grounded, anim state should be either idle or running 
+                if (!anims.GetBool("isGrounded"))
+                {
+                    anims.SetBool("isGrounded", true);
+                    anims.SetBool("isOnWall", false);
+                }
+                break;
+            case MotionStates.AIRBORNE:
+                // If state is airborne, anim state should be falling unless jumping or dashing (set by trigger)
+                if (anims.GetBool("isGrounded"))
+                {
+                    anims.SetBool("isGrounded", false);
+                    anims.SetBool("isOnWall", false);
+                }
+                break;
+            case MotionStates.WALLCLING:
+                // If state is wallcling, anim state should be wallcling
+                if (!anims.GetBool("isOnWall")){
+                    anims.SetBool("isOnWall", true);
+                }
+                break;
+            default:
+                // Unknown case
+                break;
+
         }
     }
 
@@ -117,6 +164,7 @@ public class Controller : MonoBehaviour
         {
             if (currentState == MotionStates.WALLCLING)
             {
+                anims.SetBool("isOnWall", false);
                 canMoveHoriz = false;
                 StartCoroutine(postWallclingTimer());
                 StopCoroutine("wallclingGravity");
@@ -130,6 +178,7 @@ public class Controller : MonoBehaviour
                 rb.AddForce(new Vector2(0, jumpForce));
             }
             numJumps--;
+            anims.SetTrigger("Jump");
             // Update the state machine if needed
             if (currentState != MotionStates.AIRBORNE)
             {
@@ -153,6 +202,7 @@ public class Controller : MonoBehaviour
             // Pause the player at their current y axis value
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.gravityScale = 0f;
+            anims.SetTrigger("Dash");
             rb.AddForce(dashForce);
             canDash = false;
             StartCoroutine(dashCooldown());
@@ -302,5 +352,10 @@ public class Controller : MonoBehaviour
     public bool getDead()
     {
         return isDead;
+    }
+
+    private void flipX()
+    {
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 }
