@@ -11,6 +11,7 @@ public class Controller : MonoBehaviour
     private Rigidbody2D rb;
     HuskController husk;
     GroundDetection detector;
+    Animator anims;
 
     public float horizontalSpeed = 25.0f;
     [SerializeField]
@@ -59,6 +60,11 @@ public class Controller : MonoBehaviour
         {
             rb = GetComponent<Rigidbody2D>();
         }
+        if (!anims)
+        {
+            anims = GetComponent<Animator>();
+        }
+
         gravity = rb.gravityScale;
         currentState = MotionStates.GROUNDED;
 
@@ -83,6 +89,32 @@ public class Controller : MonoBehaviour
             // Become grounded, refresh jumps.
             currentState = MotionStates.GROUNDED;
             numJumps = MAX_JUMPS;
+        }
+
+        // Adjust animator bols based on motion state
+        switch (currentState)
+        {
+            case MotionStates.GROUNDED:
+                // If player is grounded, anim state should be either idle or running 
+                if (!anims.GetBool("isGrounded"))
+                {
+                    anims.SetBool("isGrounded", true);
+                }
+                break;
+            case MotionStates.AIRBORNE:
+                // If state is airborne, anim state should be falling unless jumping or dashing (set by trigger)
+                if (anims.GetBool("isGrounded"))
+                {
+                    anims.SetBool("isGrounded", false);
+                }
+                break;
+            case MotionStates.WALLCLING:
+                // If state is wallcling, anim state should be wallcling
+                break;
+            default:
+                // Unknown case
+                break;
+
         }
     }
 
@@ -130,6 +162,7 @@ public class Controller : MonoBehaviour
                 rb.AddForce(new Vector2(0, jumpForce));
             }
             numJumps--;
+            anims.SetTrigger("Jump");
             // Update the state machine if needed
             if (currentState != MotionStates.AIRBORNE)
             {
