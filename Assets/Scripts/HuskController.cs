@@ -73,7 +73,7 @@ public class HuskController : MonoBehaviour
         yield return new WaitForSeconds(spawnTimer);
         // Wake up husk
         collider.enabled = true;
-        canMove = true;
+        //canMove = true;
         moveTarget = waypoints.Dequeue();
         Debug.Log("Initial target: " + moveTarget);
     }
