@@ -12,6 +12,7 @@ public class Controller : MonoBehaviour
     HuskController husk;
     GroundDetection detector;
     Animator anims;
+    SpriteRenderer sprite;
 
     public float horizontalSpeed = 25.0f;
     [SerializeField]
@@ -91,6 +92,15 @@ public class Controller : MonoBehaviour
             numJumps = MAX_JUMPS;
         }
 
+        if (direction > 0 && transform.localScale.x < 0)
+        {
+            flipX();
+        }
+        else if (direction < 0 && transform.localScale.x > 0)
+        {
+            flipX();
+        }
+
         // Adjust animator bols based on motion state
         switch (currentState)
         {
@@ -99,6 +109,7 @@ public class Controller : MonoBehaviour
                 if (!anims.GetBool("isGrounded"))
                 {
                     anims.SetBool("isGrounded", true);
+                    anims.SetBool("isOnWall", false);
                 }
                 break;
             case MotionStates.AIRBORNE:
@@ -106,10 +117,14 @@ public class Controller : MonoBehaviour
                 if (anims.GetBool("isGrounded"))
                 {
                     anims.SetBool("isGrounded", false);
+                    anims.SetBool("isOnWall", false);
                 }
                 break;
             case MotionStates.WALLCLING:
                 // If state is wallcling, anim state should be wallcling
+                if (!anims.GetBool("isOnWall")){
+                    anims.SetBool("isOnWall", true);
+                }
                 break;
             default:
                 // Unknown case
@@ -149,6 +164,7 @@ public class Controller : MonoBehaviour
         {
             if (currentState == MotionStates.WALLCLING)
             {
+                anims.SetBool("isOnWall", false);
                 canMoveHoriz = false;
                 StartCoroutine(postWallclingTimer());
                 StopCoroutine("wallclingGravity");
@@ -336,5 +352,10 @@ public class Controller : MonoBehaviour
     public bool getDead()
     {
         return isDead;
+    }
+
+    private void flipX()
+    {
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 }
