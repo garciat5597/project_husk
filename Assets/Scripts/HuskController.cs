@@ -82,4 +82,9 @@ public class HuskController : MonoBehaviour
     {
         waypoints.Enqueue(move);
     }
+
+    public void setCanMove(bool val)
+    {
+        canMove = val;
+    }
 }
