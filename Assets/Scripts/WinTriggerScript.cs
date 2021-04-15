@@ -7,6 +7,7 @@ public class WinTriggerScript : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1.0f;
+    public HuskController husk;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,9 +16,10 @@ public class WinTriggerScript : MonoBehaviour
         {
             Debug.Log("Win trigger tripped");
 
-            //pause
-            Time.timeScale = 0f;
+            //pause the husk
+            husk.setCanMove(false);
 
+            //fades out from level to credits
             StartCoroutine(fadeOut());
         }
 
