@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public static bool IsPaused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject controlsMenu;
 
     // Update is called once per frame
     void Update ()
@@ -53,6 +54,18 @@ public class PauseMenu : MonoBehaviour
         // reset player position
         // reset shadow position
         // reset enemies and traps
+    }
+
+    public void ControlsMenu()
+    {
+        pauseMenuUI.SetActive(false);
+        controlsMenu.SetActive(true);
+    }
+
+    public void ReturnToMenu()
+    {
+        pauseMenuUI.SetActive(true);
+        controlsMenu.SetActive(false);
     }
 
     // return to the main menu
