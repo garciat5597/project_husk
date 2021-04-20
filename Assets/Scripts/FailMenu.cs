@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,7 @@ public class FailMenu : MonoBehaviour
     public static bool Failed = false;
     public Controller playerController;
     public GameObject failMenuUI;
+    public Animator transition;
 
     private void Start()
     {
@@ -53,6 +55,10 @@ public class FailMenu : MonoBehaviour
         failMenuUI.SetActive(false);
         //Time.timeScale = 1f;
         Failed = false;
-        SceneManager.LoadScene("TitleMenu", LoadSceneMode.Single);
+    }
+
+    void transitionOut()
+    {
+        transition.SetTrigger("Start");
     }
 }

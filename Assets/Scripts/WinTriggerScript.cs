@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class WinTriggerScript : MonoBehaviour
 {
+    public Animator transition;
+    public float transitionTime = 1.0f;
+    public HuskController husk;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,6 +15,18 @@ public class WinTriggerScript : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Debug.Log("Win trigger tripped");
+
+            //pause the husk
+            husk.setCanMove(false);
+
+            //fades out from level to credits
+            StartCoroutine(fadeOut());
+        }
+
+        IEnumerator fadeOut()
+        {
+            transition.SetTrigger("Start");
+            yield return new WaitForSeconds(transitionTime);
             SceneManager.LoadScene("Credits", LoadSceneMode.Single);
         }
     }
