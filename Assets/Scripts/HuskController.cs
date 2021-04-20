@@ -15,6 +15,8 @@ public class HuskController : MonoBehaviour
     float speed = 17f;
     BoxCollider2D collider;
     GameObject player;
+    GroundDetection detector;
+    Animator anims;
     [SerializeField]
     bool canMove = false;
     Vector3 moveTarget;
@@ -24,10 +26,15 @@ public class HuskController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
+        detector = GetComponentInChildren<GroundDetection>();
         // Get player
         if (!player)
         {
             player = GameObject.FindGameObjectWithTag("Player");
+        }
+        if (!anims)
+        {
+            anims = GetComponent<Animator>();
         }
         // Start input collecting as timer rolls down
         StartCoroutine(spawnDelay());
@@ -59,7 +66,48 @@ public class HuskController : MonoBehaviour
 
             // Move towards location
             Vector3 direction = new Vector3(moveTarget.x - transform.position.x, moveTarget.y - transform.position.y, 0f);
+            // Set animator flags based on next position
+            // Flip sprite if the Husk's x scale does not match its next movement direction
+            if (direction.x > 0 && transform.localScale.x < 0)
+            {
+                Flip();
+            }
+            else if (direction.x < 0 && transform.localScale.x > 0)
+            {
+                Flip();
+            }
             direction = direction.normalized;
+
+            if (!anims.GetBool("isRunning"))
+            {
+                anims.SetBool("isRunning", true);
+            }
+            if (detector.getGrounded())
+            {
+                if (!anims.GetBool("isGrounded"))
+                {
+                    anims.SetBool("isGrounded", true);
+                }
+            }
+            else if (anims.GetBool("isGrounded"))
+            {
+                anims.SetBool("isGrounded", false);
+            }
+
+            if(direction.y > 0.2)
+            {
+                if (!anims.GetBool("isJumping"))
+                {
+                    anims.SetBool("isJumping", true);
+                }
+            }
+            else
+            {
+                if (anims.GetBool("isJumping"))
+                {
+                    anims.SetBool("isJumping", false);
+                }
+            }
 
             transform.position += direction * speed * Time.deltaTime;
         }
@@ -72,8 +120,8 @@ public class HuskController : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnTimer);
         // Wake up husk
-        collider.enabled = true;
-        //canMove = true;
+        //collider.enabled = true;
+        canMove = true;
         moveTarget = waypoints.Dequeue();
         Debug.Log("Initial target: " + moveTarget);
     }
@@ -86,5 +134,10 @@ public class HuskController : MonoBehaviour
     public void setCanMove(bool val)
     {
         canMove = val;
+    }
+
+    void Flip()
+    {
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 }
