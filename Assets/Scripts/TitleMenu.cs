@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TitleMenu : MonoBehaviour
 {
     public GameObject titleMenuUI;
+    public GameObject controlsMenu;
 
     [SerializeField] private string firstLevel = "Level";
 
@@ -15,6 +16,18 @@ public class TitleMenu : MonoBehaviour
         Debug.Log("Moving to first scene");
         titleMenuUI.SetActive(false);
         SceneManager.LoadScene(firstLevel, LoadSceneMode.Single);
+    }
+
+    public void ControlsMenu()
+    {
+        titleMenuUI.SetActive(false);
+        controlsMenu.SetActive(true);
+    }
+
+    public void ReturnToMenu()
+    {
+        titleMenuUI.SetActive(true);
+        controlsMenu.SetActive(false);
     }
 
     // Quit out of the game
