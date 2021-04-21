@@ -9,11 +9,13 @@ public class SlimeScript : MonoBehaviour
     public int effectStrength;
     [SerializeField]
     private Rigidbody2D player;
+    private float removeEffect;
 
     private void Start()
     {
         Debug.Log("pre-play drag: " + player.drag);
         player = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
+        removeEffect = player.drag;
     }
     void OnTriggerStay2D(Collider2D other)
     { 
@@ -34,7 +36,7 @@ public class SlimeScript : MonoBehaviour
     IEnumerator slimeHazzardEffect()
     {
         yield return new WaitForSeconds(effectDuration);
-        player.drag = 2;
+        player.drag = removeEffect;
         Debug.Log("Status Removed " + player.drag);
     }
 }
