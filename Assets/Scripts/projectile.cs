@@ -6,18 +6,31 @@ public class projectile : MonoBehaviour
 {
     public Transform firePoint;
     public flyingBook bookPrefab;
+    public GameObject hand;
     public float flightTime = 1.5f;
     public int reloadTime = 1;
+    private float handRotationSpeed;
     private bool reloading = false;
+    
     public bool flyLeft = false;
 
     private void Start()
     {
+        
+        
         reloading = false;
+       
     }
     // Update is called once per frame
     void Update()
     {
+        float handRotationSpeed = 360 / reloadTime;
+        if (flyLeft)
+        {
+            handRotationSpeed *= -1;
+        }
+        
+        hand.transform.Rotate(new Vector3(0, 0, handRotationSpeed * Time.deltaTime));
         if (reloading == false)
         {
             StartCoroutine(Shoot());
