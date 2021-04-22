@@ -55,6 +55,7 @@ public class FailMenu : MonoBehaviour
         failMenuUI.SetActive(false);
         //Time.timeScale = 1f;
         Failed = false;
+        SceneManager.LoadScene("TitleMenu", LoadSceneMode.Single);
     }
 
     void transitionOut()
