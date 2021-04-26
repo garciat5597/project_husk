@@ -52,6 +52,7 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         // Find the Husk
         husk = GameObject.FindGameObjectWithTag("Husk").GetComponent<HuskController>();
         // Load the ground detector component
