@@ -37,6 +37,8 @@ public class HuskController : MonoBehaviour
             anims = GetComponent<Animator>();
         }
         // Start input collecting as timer rolls down
+        waypoints.Enqueue(new Vector3(transform.position.x + 5, transform.position.y + 4, transform.position.z));
+        waypoints.Enqueue(new Vector3(transform.position.x + 7, transform.position.y + 2, transform.position.z));
         StartCoroutine(spawnDelay());
     }
 
