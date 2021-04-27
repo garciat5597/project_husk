@@ -118,11 +118,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1551787224866501078}
-  bookPrefab: {fileID: 7238374921716595209, guid: 9b1417c1609519048a3786454fa535e2, type: 3}
+  bookPrefab:
+  - {fileID: 2620444762492823868, guid: 738abf50727a05946a80dfee3bb14c97, type: 3}
+  - {fileID: 2129483767038562302, guid: c4ebfc4e32208d44e9c697d7b712eaf0, type: 3}
+  - {fileID: 4300289847683275434, guid: 4cd942b8873289a4e8cbd2c7db5dec37, type: 3}
+  - {fileID: 3919544967840201898, guid: b605a0234b644fc488619ec0dc000abb, type: 3}
+  - {fileID: 8524023701964943263, guid: 9b1417c1609519048a3786454fa535e2, type: 3}
   hand: {fileID: 8954473485761097587}
   flightTime: 1.5
   reloadTime: 1
-  handRotationSpeed: 0
   flyLeft: 0
 --- !u!1 &1551787224866501079
 GameObject:
