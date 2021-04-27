@@ -420,7 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleMenuUI: {fileID: 908714514}
   controlsMenu: {fileID: 154081740}
-  firstLevel: Level
+  firstLevel: IntroCutscene
 --- !u!114 &722891703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,6 +629,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1431978930}
+  - {fileID: 1713307709}
   m_Father: {fileID: 722891706}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
