@@ -1357,7 +1357,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7872280622738853106, guid: 0491461449ace7e4c95ad72022362374, type: 3}
   m_PrefabInstance: {fileID: 145211244}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
 --- !u!1001 &168708470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1456,9 +1455,6 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f400ff82d5c1044448b2d08e3e4d7d23, type: 3}
 --- !u!1 &191872875
-=======
---- !u!1 &165385386
->>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21481,7 +21477,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_GameObject: {fileID: 1487601039}
   m_CullTransparentMesh: 1
 --- !u!225 &1487601044
@@ -21496,16 +21491,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
-=======
-  m_GameObject: {fileID: 1504097287}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.65, y: -91.91, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 25
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &1507089877
 GameObject:
   m_ObjectHideFlags: 0
