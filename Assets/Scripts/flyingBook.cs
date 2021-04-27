@@ -6,7 +6,7 @@ public class flyingBook : MonoBehaviour
 {
     public int flightSpeed=10, flightDirection=1;
     public float flightTime;
-    
+    public bool flipRotation=false;
 
     //public Controller player;
     public Rigidbody2D rb;
@@ -15,7 +15,14 @@ public class flyingBook : MonoBehaviour
     void Start()
     {
         this.rb.velocity = new Vector2(flightSpeed, 0) * flightDirection;
-        this.rb.rotation -= 10f;
+        if (flipRotation)
+        {
+            this.rb.rotation += 10f;
+        }
+        else
+        {
+            this.rb.rotation -= 10f;
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -37,6 +44,7 @@ public class flyingBook : MonoBehaviour
     {
         if (goLeft)
         {
+            flipRotation = true;
             flightDirection=-1;
         }
     }
