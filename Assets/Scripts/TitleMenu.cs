@@ -8,7 +8,7 @@ public class TitleMenu : MonoBehaviour
     public GameObject titleMenuUI;
     public GameObject controlsMenu;
 
-    [SerializeField] private string firstLevel = "Level";
+    [SerializeField] private string firstLevel = "IntroCutscene";
 
     // Start the game, moving to the first scene
     public void StartGame()
