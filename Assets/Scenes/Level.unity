@@ -17045,6 +17045,7 @@ GameObject:
   - component: {fileID: 1487601043}
   - component: {fileID: 1487601042}
   - component: {fileID: 1487601041}
+  - component: {fileID: 1487601044}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -17166,6 +17167,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487601039}
   m_CullTransparentMesh: 1
+--- !u!225 &1487601044
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487601039}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1507089877
 GameObject:
   m_ObjectHideFlags: 0
@@ -17904,6 +17917,7 @@ GameObject:
   - component: {fileID: 1629532390}
   - component: {fileID: 1629532389}
   - component: {fileID: 1629532388}
+  - component: {fileID: 1629532391}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -18025,6 +18039,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629532386}
   m_CullTransparentMesh: 1
+--- !u!225 &1629532391
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629532386}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1637397492
 GameObject:
   m_ObjectHideFlags: 0
@@ -20400,6 +20426,7 @@ GameObject:
   - component: {fileID: 1864594077}
   - component: {fileID: 1864594076}
   - component: {fileID: 1864594079}
+  - component: {fileID: 1864594080}
   m_Layer: 0
   m_Name: ExitMenu
   m_TagString: Untagged
@@ -20491,6 +20518,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!95 &1864594080
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864594075}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7add554d4c5ab534384f753e918b2209, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1866750166
 GameObject:
   m_ObjectHideFlags: 0
@@ -21270,6 +21316,7 @@ GameObject:
   - component: {fileID: 1935054654}
   - component: {fileID: 1935054653}
   - component: {fileID: 1935054652}
+  - component: {fileID: 1935054655}
   m_Layer: 0
   m_Name: FailTitle
   m_TagString: Untagged
@@ -21338,6 +21385,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1935054655
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935054651}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1936714173
 PrefabInstance:
   m_ObjectHideFlags: 0
