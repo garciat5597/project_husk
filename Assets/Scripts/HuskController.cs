@@ -59,7 +59,6 @@ public class HuskController : MonoBehaviour
                 float distanceFromWaypoint = Vector3.Distance(transform.position, moveTarget);
                 if (distanceFromWaypoint <= 0.5f)
                 {
-
                     moveTarget = waypoints.Dequeue();
                 }
 
@@ -70,48 +69,61 @@ public class HuskController : MonoBehaviour
             Vector3 direction = new Vector3(moveTarget.x - transform.position.x, moveTarget.y - transform.position.y, 0f);
             // Set animator flags based on next position
             // Flip sprite if the Husk's x scale does not match its next movement direction
-            if (direction.x > 0 && transform.localScale.x < 0)
+            if(direction.magnitude < 0.3)
             {
-                Flip();
-            }
-            else if (direction.x < 0 && transform.localScale.x > 0)
-            {
-                Flip();
-            }
-            direction = direction.normalized;
-
-            if (!anims.GetBool("isRunning"))
-            {
-                anims.SetBool("isRunning", true);
-            }
-            if (detector.getGrounded())
-            {
-                if (!anims.GetBool("isGrounded"))
+                // Animator
+                if (anims.GetBool("isRunning"))
                 {
-                    anims.SetBool("isGrounded", true);
-                }
-            }
-            else if (anims.GetBool("isGrounded"))
-            {
-                anims.SetBool("isGrounded", false);
-            }
-
-            if(direction.y > 0.2)
-            {
-                if (!anims.GetBool("isJumping"))
-                {
-                    anims.SetBool("isJumping", true);
+                    anims.SetBool("isRunning", false);
                 }
             }
             else
             {
-                if (anims.GetBool("isJumping"))
+                // Only bother moving is movement is more significant than half a unit
+                if (direction.x > 0 && transform.localScale.x < 0)
                 {
-                    anims.SetBool("isJumping", false);
+                    Flip();
                 }
-            }
+                else if (direction.x < 0 && transform.localScale.x > 0)
+                {
+                    Flip();
+                }
+                direction = direction.normalized;
 
-            transform.position += direction * speed * Time.deltaTime;
+                if (!anims.GetBool("isRunning"))
+                {
+                    anims.SetBool("isRunning", true);
+                }
+                if (detector.getGrounded())
+                {
+                    if (!anims.GetBool("isGrounded"))
+                    {
+                        anims.SetBool("isGrounded", true);
+                    }
+                }
+                else if (anims.GetBool("isGrounded"))
+                {
+                    anims.SetBool("isGrounded", false);
+                }
+
+                if (direction.y > 0.2)
+                {
+                    if (!anims.GetBool("isJumping"))
+                    {
+                        anims.SetBool("isJumping", true);
+                    }
+                }
+                else
+                {
+                    if (anims.GetBool("isJumping"))
+                    {
+                        anims.SetBool("isJumping", false);
+                    }
+                }
+
+                transform.position += direction * speed * Time.deltaTime;
+            }
+            
         }
 
 
