@@ -10,6 +10,5 @@ public class ObjectSoundTrigger : MonoBehaviour
     void Start()
     {
         FMODUnity.RuntimeManager.PlayOneShotAttached(eventPath, gameObject);
-        Debug.Log("ya");
     }
 }

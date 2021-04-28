@@ -190,6 +190,10 @@ public class Controller : MonoBehaviour
             }
             numJumps--;
             anims.SetTrigger("Jump");
+
+            // Play jump sound
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Doctor/Jump");
+
             // Update the state machine if needed
             if (currentState != MotionStates.AIRBORNE)
             {
@@ -273,6 +277,8 @@ public class Controller : MonoBehaviour
             }
             StartCoroutine("wallclingGravity");
         }
+
+        Debug.Log(collision.gameObject.name);
     }
 
     /*

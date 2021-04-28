@@ -15,7 +15,7 @@ public class FailMenu : MonoBehaviour
     public Animator transition;
     public Text failTitle;
 
-    private string[] textOptions = new string[] {"The Doctor is Out", "You Died", "Your Past Caught Up", "Try Again?" };
+    private string[] textOptions = new string[] { "The Doctor is Out", "You Died", "Your Past Caught Up", "Try Again?" };
     string currentString;
 
     private void Start()
@@ -51,6 +51,7 @@ public class FailMenu : MonoBehaviour
 
         // Stop SFX
         MasterSoundController.StopAllSFX();
+        MasterSoundController.MuteSFX();
 
         background.SetActive(true);
         foreground.SetActive(true);
@@ -71,6 +72,7 @@ public class FailMenu : MonoBehaviour
     {
         // Stop SFX
         MasterSoundController.StopAllSFX();
+        MasterSoundController.UnmuteSFX();
 
         StopAllCoroutines();
         SceneManager.LoadScene("Level", LoadSceneMode.Single);
@@ -94,14 +96,11 @@ public class FailMenu : MonoBehaviour
         foreground.SetActive(false);
         failMenuUI.SetActive(false);
         //Time.timeScale = 1f;
-        
+
     }
 
     void transitionOut()
     {
         transition.SetTrigger("Start");
     }
-
-
-
 }

@@ -13975,6 +13975,7 @@ GameObject:
   - component: {fileID: 758065339}
   - component: {fileID: 758065340}
   - component: {fileID: 758065341}
+  - component: {fileID: 758065342}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -14104,6 +14105,18 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
+--- !u!114 &758065342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758065335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e3554b15fb9413fb0dd0a7e02e2b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &787129899
 GameObject:
   m_ObjectHideFlags: 0
@@ -14927,6 +14940,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &835422282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835422276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5e0c3fcfea244b2a13ff9fd273c71f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &836501708
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,12 +22,14 @@ public class SlimeScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Status Applied " + player.drag);
+            DoctorSoundController.SetFootstepType(2);
             //player.velocity *= slimeEffect;
             player.drag = effectStrength;
         }  
     }
     void OnTriggerExit2D(Collider2D other)
     {
+        DoctorSoundController.SetFootstepType(0);
         if (other.gameObject.tag == "Player")
         {
             StartCoroutine(slimeHazzardEffect());

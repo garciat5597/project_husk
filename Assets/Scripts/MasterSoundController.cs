@@ -11,7 +11,6 @@ public class MasterSoundController : MonoBehaviour
     void Start()
     {
         sfxBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
-        Debug.Log("aa");
     }
 
     public static void StopAllSFX()
@@ -27,5 +26,17 @@ public class MasterSoundController : MonoBehaviour
     public static void ResumeSFX()
     {
         sfxBus.setPaused(false);
+    }
+
+    public static void MuteSFX()
+    {
+        sfxBus.setMute(true);
+        Debug.Log("muted");
+    }
+
+    public static void UnmuteSFX()
+    {
+        sfxBus.setMute(false);
+        Debug.Log("Unmuted");
     }
 }
