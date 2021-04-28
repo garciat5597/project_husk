@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3313392105216067815}
   - component: {fileID: 1626928754184223542}
   m_Layer: 0
-  m_Name: Some_Furniture_2
+  m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1328125913625460623}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6ed215066e059ca4c8107104b0902578, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

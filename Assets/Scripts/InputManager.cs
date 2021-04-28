@@ -29,17 +29,6 @@ public class InputManager : MonoBehaviour
         // Check for a dead player character
         if (!movement.getDead())
         {
-            // movement on the X axis
-            horizMove = Input.GetAxisRaw("Horizontal");
-            if (horizMove < 0)
-            {
-                movement.setDirection(-1);
-            }
-            else if (horizMove > 0)
-            {
-                movement.setDirection(1);
-            }
-
             // Jump
             if (Input.GetButtonDown("Jump"))
             {
@@ -51,6 +40,18 @@ public class InputManager : MonoBehaviour
             {
                 dash = true;
             }
+            // movement on the X axis
+            horizMove = Input.GetAxisRaw("Horizontal");
+            if (horizMove < 0)
+            {
+                movement.setDirection(-1);
+            }
+            else if (horizMove > 0)
+            {
+                movement.setDirection(1);
+            }
+
+
         }
        
 
