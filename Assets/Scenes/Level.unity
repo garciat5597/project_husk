@@ -15394,6 +15394,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.017833967
       objectReference: {fileID: 0}
+    - target: {fileID: 7644783805723051060, guid: d57fedb697216c94094ee332d3f07bb9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644783805723051060, guid: d57fedb697216c94094ee332d3f07bb9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7709017824397166320, guid: d57fedb697216c94094ee332d3f07bb9, type: 3}
       propertyPath: m_SortingOrder
       value: 8
@@ -15533,6 +15541,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.882842, y: 12.221748}
   m_EdgeRadius: 0
+--- !u!114 &873863612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873863608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e361e223e692472b884057fa54ccd75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &901197119
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoctorSoundController : MonoBehaviour
+public class HuskSoundController : MonoBehaviour
 {
     // Get FMOD instances
     FMOD.Studio.EventInstance footstepEvent;
@@ -20,23 +20,19 @@ public class DoctorSoundController : MonoBehaviour
     }
 
     // Play footstep
-    void PlayDoctorFootstep()
+    void PlayHuskFootstep()
     {
         // Create instance
-        footstepEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Doctor/Footsteps");
+        footstepEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Enemies/Husk/Footsteps");
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(footstepEvent, gameObject.transform, gameObject.GetComponent<Rigidbody2D>());
         footstepEvent.setParameterByName("MaterialType", materialType);
         footstepEvent.start();
         footstepEvent.release();
     }
 
-    void PlayDoctorDash()
-    { 
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Doctor/Dash");
-    }
-
-    void PlayDoctorWallCling()
+    void PlayHuskWallCling()
     {
         // Put here when we get ittt
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Doctor/Wall_Cling");
+        FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/Enemies/Husk/Wall_Cling", gameObject);
     }
 }
