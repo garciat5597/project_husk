@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6557623089508793234}
   - component: {fileID: 1921257680919995855}
   - component: {fileID: 7916221660698295496}
+  - component: {fileID: 1036821356357414456}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -151,3 +152,15 @@ PolygonCollider2D:
       - {x: -0.044612765, y: 1.6049842}
       - {x: -0.7467334, y: 1.3453178}
       - {x: -1.1248014, y: 0.86643165}
+--- !u!114 &1036821356357414456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557623089508793233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec28222e9e9934996993bb6eaacc18be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
