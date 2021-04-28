@@ -37,6 +37,7 @@ public class DoctorSoundController : MonoBehaviour
     void PlayDoctorWallCling()
     {
         // Put here when we get ittt
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Doctor/Wall_Cling");
     }
 
 }

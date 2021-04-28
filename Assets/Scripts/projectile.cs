@@ -44,6 +44,9 @@ public class projectile : MonoBehaviour
     // When called: activates reload, makes an instance of a book, set's it's flight time, and then waits till the reload time is finished before deactivating reload
     IEnumerator Shoot()
     {
+        // Play throw sound
+        MiscEnemySoundController.PlayBookThrow(hand);
+
         bookSpot++;
         if (bookSpot >= bookLength)
         {
