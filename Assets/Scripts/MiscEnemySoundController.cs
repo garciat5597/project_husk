@@ -16,6 +16,12 @@ public class MiscEnemySoundController : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/Enemies/Slime/Slime_Idle", gameObject);
     }
 
+    public static void PlaySlimeGrab()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Slime/Slime_Grapple");
+        Debug.Log("ttttt");
+    }
+
     public static void PlayBookThrow(GameObject hand)
     {
         FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/Enemies/Hand/Book_Throw", hand);
