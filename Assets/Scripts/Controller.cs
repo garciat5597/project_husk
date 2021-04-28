@@ -277,8 +277,6 @@ public class Controller : MonoBehaviour
             }
             StartCoroutine("wallclingGravity");
         }
-
-        Debug.Log(collision.gameObject.name);
     }
 
     /*
