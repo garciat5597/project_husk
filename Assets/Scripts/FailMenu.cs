@@ -76,7 +76,6 @@ public class FailMenu : MonoBehaviour
         SceneManager.LoadScene("Level", LoadSceneMode.Single);
         foreground.SetActive(false);
         failMenuUI.SetActive(false);
-        Failed = false;
         //Time.timeScale = 1f;
         // resume: timescale to 1, unpause, etc
         // reset player position
@@ -95,7 +94,6 @@ public class FailMenu : MonoBehaviour
         foreground.SetActive(false);
         failMenuUI.SetActive(false);
         //Time.timeScale = 1f;
-        Failed = false;
         
     }
 
