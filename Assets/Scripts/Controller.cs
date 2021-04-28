@@ -77,6 +77,9 @@ public class Controller : MonoBehaviour
      */
     private void FixedUpdate()
     {
+        // Update Y position for ambiance
+        MasterSoundController.UpdatePlayerPosition(transform.position.y);
+
         // Clamp fall speed
         rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, MAX_FALL));
         // Create a new entry every second
