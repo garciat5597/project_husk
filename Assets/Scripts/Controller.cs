@@ -135,6 +135,12 @@ public class Controller : MonoBehaviour
                 break;
 
         }
+
+        // Visualize velocity
+        if(rb.velocity.magnitude != 0)
+        {
+            Debug.DrawRay(transform.position, rb.velocity.normalized * 5, Color.blue);
+        }
     }
 
     public void setDirection(int nDirection)
@@ -184,7 +190,6 @@ public class Controller : MonoBehaviour
                 StopCoroutine("wallclingGravity");
                 // Special jump arc out of wallcling
                 rb.AddForce(new Vector2(-direction * (jumpForce * 0.8f), jumpForce));
-
             }
             else
             {
@@ -220,12 +225,16 @@ public class Controller : MonoBehaviour
             // Pause the player at their current y axis value
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.gravityScale = 0f;
+            // ensure wallcling state is exited on dash, since there is no dash state
+            if (currentState == MotionStates.WALLCLING)
+            {
+                currentState = MotionStates.AIRBORNE;
+            }
             anims.SetTrigger("Dash");
             rb.AddForce(dashForce);
             canDash = false;
             StartCoroutine(dashCooldown());
             StartCoroutine(dashGravity());
-            // Change state to dashing
         }
     }
 
@@ -314,6 +323,7 @@ public class Controller : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             currentState = MotionStates.AIRBORNE;
+            anims.SetBool("isOnWall", false);
             rb.gravityScale = gravity;
         }
     }
