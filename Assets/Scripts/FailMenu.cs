@@ -49,6 +49,9 @@ public class FailMenu : MonoBehaviour
         currentString = textOptions[random];
         failTitle.text = currentString;
 
+        // Stop SFX
+        MasterSoundController.StopAllSFX();
+
         background.SetActive(true);
         foreground.SetActive(true);
         Failed = true;
@@ -66,6 +69,9 @@ public class FailMenu : MonoBehaviour
     // Restart the level
     public void Restart()
     {
+        // Stop SFX
+        MasterSoundController.StopAllSFX();
+
         StopAllCoroutines();
         SceneManager.LoadScene("Level", LoadSceneMode.Single);
         foreground.SetActive(false);
@@ -81,6 +87,9 @@ public class FailMenu : MonoBehaviour
     // return to the main menu
     public void Quit()
     {
+        // Stop SFX
+        MasterSoundController.StopAllSFX();
+
         StopAllCoroutines();
         SceneManager.LoadScene("TitleMenu", LoadSceneMode.Single);
         foreground.SetActive(false);

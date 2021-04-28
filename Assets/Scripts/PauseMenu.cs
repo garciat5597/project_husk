@@ -29,6 +29,7 @@ public class PauseMenu : MonoBehaviour
     // Pause the game, setting timescale to 0
     void Pause ()
     {
+        MasterSoundController.PauseSFX();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         IsPaused = true;
@@ -37,6 +38,7 @@ public class PauseMenu : MonoBehaviour
     // Resume the game
     public void Resume ()
     {
+        MasterSoundController.ResumeSFX();
         Debug.Log("Resuming");
         pauseMenuUI.SetActive(false);
         if (controlsMenu.activeSelf)
@@ -50,6 +52,8 @@ public class PauseMenu : MonoBehaviour
     // Restart the level
     public void Restart ()
     {
+        MasterSoundController.StopAllSFX();
+        MasterSoundController.ResumeSFX();
         Debug.Log("*TODO* Restarting Level...");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
