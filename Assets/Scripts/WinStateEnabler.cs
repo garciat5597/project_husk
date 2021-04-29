@@ -17,7 +17,7 @@ public class WinStateEnabler : MonoBehaviour
             // Enable the exit, and then disable itself
             if (winTrigger)
             {
-                winTrigger.SetActive(true);
+                winHitbox.enabled = true;
                 gameObject.SetActive(false);
 
                 // activate and deactivate directions

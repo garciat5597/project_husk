@@ -27,7 +27,7 @@ public class WinTriggerScript : MonoBehaviour
         {
             transition.SetTrigger("Start");
             yield return new WaitForSeconds(transitionTime);
-            SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+            SceneManager.LoadScene("EndCutscene", LoadSceneMode.Single);
         }
     }
 }
