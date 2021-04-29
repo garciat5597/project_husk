@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectDuration: 1
-  effectStrength: 10
+  effectStrength: 5
   player: {fileID: 0}
 --- !u!95 &1921257680919995855
 Animator:
