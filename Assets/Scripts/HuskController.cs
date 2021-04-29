@@ -13,7 +13,7 @@ public class HuskController : MonoBehaviour
     public Queue<Vector3> waypoints = new Queue<Vector3>();
     Rigidbody2D rb;
     // difficulty: master=20 hard=17 normal=15
-    float speed = 10f;
+    float speed = 15f;
     BoxCollider2D collider;
     GameObject player;
     GroundDetection detector;
