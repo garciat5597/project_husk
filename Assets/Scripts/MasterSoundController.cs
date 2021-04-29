@@ -81,4 +81,9 @@ public class MasterSoundController : MonoBehaviour
     {
         chaseMus.setParameterByName("Husk Distance", dist);
     }
+
+    public static void StopMusic()
+    {
+        chaseMus.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
 }

@@ -27,6 +27,8 @@ public class WinTriggerScript : MonoBehaviour
         {
             transition.SetTrigger("Start");
             yield return new WaitForSeconds(transitionTime);
+            MasterSoundController.StopAllSFX();
+            MasterSoundController.StopMusic();
             SceneManager.LoadScene("EndCutscene", LoadSceneMode.Single);
         }
     }

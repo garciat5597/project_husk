@@ -58,6 +58,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         IsPaused = false;
+        MasterSoundController.StopMusic();
         SceneManager.LoadScene("Level", LoadSceneMode.Single);
         // resume: timescale to 1, unpause, etc
         // reset player position
@@ -75,6 +76,8 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         controlsMenu.SetActive(false);
+        MasterSoundController.StopMusic();
+        MasterSoundController.StopAllSFX();
     }
 
     // return to the main menu
@@ -84,6 +87,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         IsPaused = false;
+        MasterSoundController.StopMusic();
+        MasterSoundController.StopAllSFX();
         SceneManager.LoadScene("TitleMenu", LoadSceneMode.Single);
     }
 }
