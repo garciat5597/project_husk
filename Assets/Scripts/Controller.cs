@@ -162,7 +162,7 @@ public class Controller : MonoBehaviour
         if (currentState != MotionStates.STUNNED && canMoveHoriz)
         {
             Vector2 targetVel = new Vector2(horizMove * horizontalSpeed, rb.velocity.y);
-            rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, 0.3f);
+            rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref currentVelocity, targetVel.x == 0 ? 0.1f : 0.2f);
 
             if (!anims.GetBool("isRunning") && horizMove != 0)
             {
