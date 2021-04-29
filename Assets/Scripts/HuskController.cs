@@ -12,7 +12,8 @@ public class HuskController : MonoBehaviour
     float spawnTimer = 5.0f;
     public Queue<Vector3> waypoints = new Queue<Vector3>();
     Rigidbody2D rb;
-    float speed = 17f;
+    // difficulty: master=20 hard=17 normal=15
+    float speed = 10f;
     BoxCollider2D collider;
     GameObject player;
     GroundDetection detector;
