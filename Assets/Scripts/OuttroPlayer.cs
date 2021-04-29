@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class OuttroPlayer : MonoBehaviour
 {
-    float cutsceneTime = 14.0f;
+    float cutsceneTime = 9.0f;
     // Start is called before the first frame update
     void Start()
     {
