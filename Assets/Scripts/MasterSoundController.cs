@@ -10,6 +10,7 @@ public class MasterSoundController : MonoBehaviour
 
     // Instances
     private static FMOD.Studio.EventInstance ambience;
+    private static FMOD.Studio.EventInstance chaseMus;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,10 @@ public class MasterSoundController : MonoBehaviour
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(ambience, gameObject.transform, gameObject.GetComponent<Rigidbody>());
         UpdatePlayerPosition(-110);
         ambience.start();
+
+        // Start Main Chase
+        chaseMus = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Main_Chase");
+        chaseMus.start();
     }
 
     public static void StopAllSFX()
@@ -59,5 +64,15 @@ public class MasterSoundController : MonoBehaviour
     public static void UpdatePlayerPosition(float pos)
     {
         ambience.setParameterByName("Vertical Position", pos);
+    }
+
+    public static void StartMainMusic()
+    {
+        chaseMus.setParameterByName("Husk Spawn", 1);
+    }
+
+    public static void UpdateHuskDistance(float dist)
+    {
+        chaseMus.setParameterByName("Husk Distance", dist);
     }
 }

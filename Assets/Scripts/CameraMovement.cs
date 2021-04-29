@@ -39,6 +39,8 @@ public class CameraMovement : MonoBehaviour
         target += targetOffset;
 
         transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, cameraSpeed);
+
+        MasterSoundController.UpdateHuskDistance(diffPlayerHusk.magnitude);
     }
 
     // Move horizontally based on Player's velocity

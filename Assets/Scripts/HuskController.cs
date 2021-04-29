@@ -139,6 +139,7 @@ public class HuskController : MonoBehaviour
         canMove = true;
         moveTarget = waypoints.Dequeue();
         Debug.Log("Initial target: " + moveTarget);
+        MasterSoundController.StartMainMusic();
     }
 
     public void addMoveEntry(Vector3 move)
