@@ -80,7 +80,7 @@ public class Controller : MonoBehaviour
         // Update Y position for ambiance
         MasterSoundController.UpdatePlayerPosition(transform.position.y);
 
-        if (!detector.getGrounded())
+        if (!detector.getGrounded() && currentState == MotionStates.GROUNDED)
         {
             currentState = MotionStates.AIRBORNE;
         }
