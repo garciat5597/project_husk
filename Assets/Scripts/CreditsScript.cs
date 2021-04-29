@@ -2,25 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CreditsScript : MonoBehaviour
 {
     float creditsTimer;
     public GameObject credits;
+
+    public Text[] creditsTextBlocks;
     // Start is called before the first frame update
     void Start()
     {
-        creditsTimer = 20.0f;
+        creditsTextBlocks = GameObject.Find("CreditsText").GetComponentsInChildren<Text>();
+        creditsTimer = 10.0f;
         StartCoroutine(Expiration());
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Roll credits
         if (credits)
         {
-            credits.transform.position += new Vector3(0, 0.1f, 0);
+            TextFadeIn();
+        }
+    }
+
+    void TextFadeIn()
+    {
+        foreach (Text block in creditsTextBlocks)
+        {
+            if (block.color.a < 1.0f)
+            {
+                block.color = new Color(block.color.r, block.color.g, block.color.b, block.color.a + (Time.deltaTime));
+            }
         }
     }
 
