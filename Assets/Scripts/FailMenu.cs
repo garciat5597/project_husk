@@ -56,16 +56,18 @@ public class FailMenu : MonoBehaviour
         background.SetActive(true);
         foreground.SetActive(true);
         Failed = true;
-        StartCoroutine(failMenuDelay());
+        foreground.SetActive(false);
+        failMenuUI.SetActive(true);
+       
     }
 
-    IEnumerator failMenuDelay()
+   /* IEnumerator failMenuDelay()
     {
         // Time before the menu is active
         yield return new WaitForSeconds(3.0f);
         foreground.SetActive(false);
         failMenuUI.SetActive(true);
-    }
+    }*/
 
     // Restart the level
     public void Restart()
