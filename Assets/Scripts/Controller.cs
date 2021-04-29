@@ -80,6 +80,10 @@ public class Controller : MonoBehaviour
         // Update Y position for ambiance
         MasterSoundController.UpdatePlayerPosition(transform.position.y);
 
+        if (!detector.getGrounded())
+        {
+            currentState = MotionStates.AIRBORNE;
+        }
         // Clamp fall speed
         rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, MAX_FALL));
         // Create a new entry every second
