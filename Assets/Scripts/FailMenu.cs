@@ -52,6 +52,8 @@ public class FailMenu : MonoBehaviour
         // Stop SFX
         MasterSoundController.StopAllSFX();
         MasterSoundController.MuteSFX();
+        MasterSoundController.TriggerChaseEnd();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Husk/Slash");
 
         background.SetActive(true);
         foreground.SetActive(true);

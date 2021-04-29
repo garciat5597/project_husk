@@ -34,19 +34,20 @@ public class MasterSoundController : MonoBehaviour
     {
         sfxBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
         ambBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        ambience.release();
     }
 
     public static void PauseSFX()
     {
         sfxBus.setPaused(true);
         ambBus.setPaused(true);
+        chaseMus.setParameterByName("Paused", 0);
     }
 
     public static void ResumeSFX()
     {
         sfxBus.setPaused(false);
         ambBus.setPaused(false);
+        chaseMus.setParameterByName("Paused", 1);
     }
 
     public static void MuteSFX()
@@ -59,6 +60,11 @@ public class MasterSoundController : MonoBehaviour
     {
         sfxBus.setMute(false);
         ambBus.setMute(false);
+    }
+
+    public static void TriggerChaseEnd()
+    {
+        chaseMus.setParameterByName("Death", 1);
     }
 
     public static void UpdatePlayerPosition(float pos)
