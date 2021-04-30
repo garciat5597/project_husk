@@ -308,8 +308,6 @@ public class Controller : MonoBehaviour
             isDead = true;
         }
 
-        Debug.Log(collision.transform.parent == null);
-
         // Check if player is on a wooden surface
         if (collision.transform.parent != null &&
            (collision.transform.parent.name == "Tables" ||

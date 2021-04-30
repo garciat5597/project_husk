@@ -27,7 +27,7 @@ public class MasterSoundController : MonoBehaviour
 
         // Start Main Chase (Turn delay low so the timing works)
         chaseMus = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Main_Game/Main_Chase");
-        chaseMus.setProperty(FMOD.Studio.EVENT_PROPERTY.SCHEDULE_DELAY, 8);
+        chaseMus.setProperty(FMOD.Studio.EVENT_PROPERTY.SCHEDULE_DELAY, 9);
         chaseMus.start();
     }
 
