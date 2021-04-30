@@ -14,7 +14,7 @@ public class CreditsScript : MonoBehaviour
     void Start()
     {
         creditsTextBlocks = GameObject.Find("CreditsText").GetComponentsInChildren<Text>();
-        creditsTimer = 10.0f;
+        creditsTimer = 11.0f;
         StartCoroutine(Expiration());
     }
 
