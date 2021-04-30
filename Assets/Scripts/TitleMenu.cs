@@ -25,7 +25,7 @@ public class TitleMenu : MonoBehaviour
         Debug.Log("Moving to practice");
         titleMenuUI.SetActive(false);
         practiceChecker.activateHusk(false);
-        SceneManager.LoadScene(firstLevel, LoadSceneMode.Single);
+        SceneManager.LoadScene("Level", LoadSceneMode.Single);
     }
 
     public void ControlsMenu()
