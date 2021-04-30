@@ -44,6 +44,8 @@ public class FailMenu : MonoBehaviour
     // Pause the game, setting timescale to 0, activate the fail menu
     void activateFailScreen()
     {
+        MasterSoundController.TriggerChaseEnd();
+
         // Choose a random text for the title
         int random = Random.Range(0, 4);
         currentString = textOptions[random];
@@ -52,7 +54,7 @@ public class FailMenu : MonoBehaviour
         // Stop SFX
         MasterSoundController.StopAllSFX();
         MasterSoundController.MuteSFX();
-        MasterSoundController.TriggerChaseEnd();
+        
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Husk/Slash");
 
         background.SetActive(true);
@@ -94,6 +96,7 @@ public class FailMenu : MonoBehaviour
     {
         // Stop SFX
         MasterSoundController.StopAllSFX();
+        MasterSoundController.StopMusic();
 
         StopAllCoroutines();
         SceneManager.LoadScene("TitleMenu", LoadSceneMode.Single);

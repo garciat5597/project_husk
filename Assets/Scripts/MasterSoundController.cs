@@ -25,8 +25,9 @@ public class MasterSoundController : MonoBehaviour
         UpdatePlayerPosition(-110);
         ambience.start();
 
-        // Start Main Chase
-        chaseMus = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Main_Chase");
+        // Start Main Chase (Turn delay low so the timing works)
+        chaseMus = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Main_Game/Main_Chase");
+        chaseMus.setProperty(FMOD.Studio.EVENT_PROPERTY.SCHEDULE_DELAY, 8);
         chaseMus.start();
     }
 
@@ -64,6 +65,8 @@ public class MasterSoundController : MonoBehaviour
 
     public static void TriggerChaseEnd()
     {
+        // Ensure death is the first parameter checked on this frams
+        FMODUnity.RuntimeManager.StudioSystem.flushCommands();
         chaseMus.setParameterByName("Death", 1);
     }
 
@@ -79,11 +82,18 @@ public class MasterSoundController : MonoBehaviour
 
     public static void UpdateHuskDistance(float dist)
     {
+        // cap at 35
+        if (dist > 35)
+        {
+            dist = 35;
+        }
+
         chaseMus.setParameterByName("Husk Distance", dist);
     }
 
     public static void StopMusic()
     {
         chaseMus.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        chaseMus.release();
     }
 }
