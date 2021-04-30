@@ -500,6 +500,7 @@ MonoBehaviour:
   transition: {fileID: 2133400535}
   transitionTime: 1
   husk: {fileID: 873863609}
+  practiceMode: {fileID: 1191044815}
 --- !u!61 &47687739
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16940,6 +16941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
+  practiceMode: {fileID: 1191044815}
 --- !u!50 &873863610
 Rigidbody2D:
   serializedVersion: 4
@@ -20332,6 +20334,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87bc7770ac07d1e4599fe2e127d19562, type: 3}
+--- !u!1 &1191044814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191044816}
+  - component: {fileID: 1191044815}
+  m_Layer: 0
+  m_Name: practiceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1191044815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191044814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09916810bf4cb244eb3d3c7eb47a0a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1191044816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191044814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1035.4492, y: 81.354904, z: -7.3315077}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1191820579
 GameObject:
   m_ObjectHideFlags: 0

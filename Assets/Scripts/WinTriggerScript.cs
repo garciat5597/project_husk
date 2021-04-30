@@ -8,6 +8,8 @@ public class WinTriggerScript : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1.0f;
     public HuskController husk;
+    [SerializeField]
+    practice practiceMode;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,11 +27,19 @@ public class WinTriggerScript : MonoBehaviour
 
         IEnumerator fadeOut()
         {
-            transition.SetTrigger("Start");
-            yield return new WaitForSeconds(transitionTime);
+            
             MasterSoundController.StopAllSFX();
             MasterSoundController.StopMusic();
-            SceneManager.LoadScene("EndCutscene", LoadSceneMode.Single);
+            if (practiceMode.getGameMode())
+            {
+                transition.SetTrigger("Start");
+                yield return new WaitForSeconds(transitionTime);
+                SceneManager.LoadScene("EndCutscene", LoadSceneMode.Single);
+            }
+            else
+            {
+                SceneManager.LoadScene("TitleMenu", LoadSceneMode.Single);
+            }
         }
     }
 }

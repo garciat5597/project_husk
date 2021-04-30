@@ -16,7 +16,7 @@ public class TitleMenu : MonoBehaviour
     {
         Debug.Log("Moving to first scene");
         titleMenuUI.SetActive(false);
-        practiceChecker.setPracticeMode(false);
+        practiceChecker.activateHusk(true);
         SceneManager.LoadScene(firstLevel, LoadSceneMode.Single);
     }
 
@@ -24,7 +24,7 @@ public class TitleMenu : MonoBehaviour
     {
         Debug.Log("Moving to practice");
         titleMenuUI.SetActive(false);
-        practiceChecker.setPracticeMode(true);
+        practiceChecker.activateHusk(false);
         SceneManager.LoadScene(firstLevel, LoadSceneMode.Single);
     }
 

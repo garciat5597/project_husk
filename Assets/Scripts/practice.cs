@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class practice : MonoBehaviour
 {
-    private static bool practiceMode;
+    private static bool practiceMode = false;
    
-    public void setPracticeMode(bool practice)
+    public void activateHusk(bool practice)
     {
         practiceMode = practice;
     }
 
   
-    public bool getPracticeMode()
+    public bool getGameMode()
     {
         return practiceMode;
     }

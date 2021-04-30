@@ -21,6 +21,8 @@ public class HuskController : MonoBehaviour
     [SerializeField]
     bool canMove = false;
     Vector3 moveTarget;
+    [SerializeField]
+    practice practiceMode;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,9 @@ public class HuskController : MonoBehaviour
         {
             anims = GetComponent<Animator>();
         }
+
+        
+
         // Start input collecting as timer rolls down
         waypoints.Enqueue(new Vector3(transform.position.x + 5, transform.position.y + 4, transform.position.z));
         waypoints.Enqueue(new Vector3(transform.position.x + 7, transform.position.y + 2, transform.position.z));
@@ -47,8 +52,7 @@ public class HuskController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+
     }
 
     private void FixedUpdate()
@@ -137,7 +141,7 @@ public class HuskController : MonoBehaviour
         yield return new WaitForSeconds(spawnTimer);
         // Wake up husk
         //collider.enabled = true;
-        canMove = true;
+        canMove = practiceMode.getGameMode();
         moveTarget = waypoints.Dequeue();
         Debug.Log("Initial target: " + moveTarget);
         MasterSoundController.StartMainMusic();
