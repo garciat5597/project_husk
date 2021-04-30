@@ -7,6 +7,7 @@ public class TitleMenu : MonoBehaviour
 {
     public GameObject titleMenuUI;
     public GameObject controlsMenu;
+    public practice practiceChecker;
 
     [SerializeField] private string firstLevel = "IntroCutscene";
 
@@ -15,6 +16,15 @@ public class TitleMenu : MonoBehaviour
     {
         Debug.Log("Moving to first scene");
         titleMenuUI.SetActive(false);
+        practiceChecker.setPracticeMode(false);
+        SceneManager.LoadScene(firstLevel, LoadSceneMode.Single);
+    }
+
+    public void PracticeGame()
+    {
+        Debug.Log("Moving to practice");
+        titleMenuUI.SetActive(false);
+        practiceChecker.setPracticeMode(true);
         SceneManager.LoadScene(firstLevel, LoadSceneMode.Single);
     }
 

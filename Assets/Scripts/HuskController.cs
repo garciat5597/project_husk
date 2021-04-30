@@ -41,6 +41,7 @@ public class HuskController : MonoBehaviour
         waypoints.Enqueue(new Vector3(transform.position.x + 5, transform.position.y + 4, transform.position.z));
         waypoints.Enqueue(new Vector3(transform.position.x + 7, transform.position.y + 2, transform.position.z));
         StartCoroutine(spawnDelay());
+       
     }
 
     // Update is called once per frame
