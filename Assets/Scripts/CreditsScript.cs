@@ -26,6 +26,13 @@ public class CreditsScript : MonoBehaviour
         {
             TextFadeIn();
         }
+
+        // Skip button
+        if (Input.GetKey(KeyCode.Space))
+        {
+            StopCoroutine(Expiration());
+            SceneManager.LoadScene("TitleMenu");
+        }
     }
 
     void TextFadeIn()

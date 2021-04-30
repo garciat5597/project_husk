@@ -16,6 +16,12 @@ public class IntroPlayer : MonoBehaviour
     void Update()
     {
         // Skip cutscene if we have time
+        // Skip button
+        if (Input.GetKey(KeyCode.Space))
+        {
+            StopCoroutine(cutsceneTimer());
+            SceneManager.LoadScene("Level", LoadSceneMode.Single);
+        }
     }
 
     IEnumerator cutsceneTimer()
