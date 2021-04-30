@@ -6,7 +6,7 @@ public class DoctorSoundController : MonoBehaviour
 {
     // Get FMOD instances
     FMOD.Studio.EventInstance footstepEvent;
-    static int materialType; // 0 = stone 1 = wood 2 = slime
+    static int materialType; // 0 = stone; 1 = wood; 2 = slime
 
     // Start is called before the first frame update
     void Start()

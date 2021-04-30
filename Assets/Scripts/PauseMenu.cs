@@ -74,6 +74,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        MasterSoundController.StopAllSFX();
+        MasterSoundController.ResumeSFX();
         pauseMenuUI.SetActive(true);
         controlsMenu.SetActive(false);
     }
@@ -87,6 +89,7 @@ public class PauseMenu : MonoBehaviour
         IsPaused = false;
         MasterSoundController.StopMusic();
         MasterSoundController.StopAllSFX();
+        MasterSoundController.ResumeSFX();
         SceneManager.LoadScene("TitleMenu", LoadSceneMode.Single);
     }
 }

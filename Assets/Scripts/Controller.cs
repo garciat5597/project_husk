@@ -13,6 +13,7 @@ public class Controller : MonoBehaviour
     GroundDetection detector;
     Animator anims;
     SpriteRenderer sprite;
+    private bool lastCollisionWasStairs = false; //For footsteps
 
     public float horizontalSpeed = 25.0f;
     [SerializeField]
@@ -306,6 +307,34 @@ public class Controller : MonoBehaviour
             // Die
             isDead = true;
         }
+
+        Debug.Log(collision.transform.parent == null);
+
+        // Check if player is on a wooden surface
+        if (collision.transform.parent != null &&
+           (collision.transform.parent.name == "Tables" ||
+            collision.transform.parent.name == "Clocks"))
+        {
+            DoctorSoundController.SetFootstepType(1);
+            lastCollisionWasStairs = false;
+        }
+
+        // Check if player is on a stone/concrete surface
+        if (collision.name == "TilemapFloors")
+        {
+            DoctorSoundController.SetFootstepType(0);
+            lastCollisionWasStairs = false;
+        }
+
+        if ( collision.transform.parent != null &&
+             (collision.transform.parent.name == "TilemapStairsCollisions" ||
+             collision.transform.parent.name == "Chandeliers"))
+        {
+            DoctorSoundController.SetFootstepType(0);
+            lastCollisionWasStairs = true;
+        }
+
+        //Debug.Log(collision.transform.parent.name);
     }
 
 
@@ -330,6 +359,21 @@ public class Controller : MonoBehaviour
             anims.SetBool("isOnWall", false);
             rb.gravityScale = gravity;
         }
+
+        // Check if player is leaving a wooden surface
+        if (collision.transform.parent.name == "Tables" ||
+            collision.transform.parent.name == "Clocks")
+        {
+            DoctorSoundController.SetFootstepType(3);
+        }
+
+        // Check if player is leaving a stone/concrete surface
+        if (collision.transform.name == "TilemapFloors" && !lastCollisionWasStairs)
+        {
+            DoctorSoundController.SetFootstepType(3);
+        }
+
+        //Debug.Log(collision.transform.name);
     }
 
 
