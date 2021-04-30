@@ -15,7 +15,12 @@ public class OuttroPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Skip button
+        if (Input.GetKey(KeyCode.Space))
+        {
+            StopCoroutine(cutsceneTimer());
+            SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+        }
     }
 
     IEnumerator cutsceneTimer()

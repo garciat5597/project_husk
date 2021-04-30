@@ -30,6 +30,11 @@ public class TitleMenu : MonoBehaviour
         controlsMenu.SetActive(false);
     }
 
+    public void ShowCredits()
+    {
+        SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+    }
+
     // Quit out of the game
     public void Quit()
     {
