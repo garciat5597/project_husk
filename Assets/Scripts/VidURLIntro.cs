@@ -12,7 +12,7 @@ public class VidURLIntro : MonoBehaviour
         video = GetComponent<VideoPlayer>();
         if (video)
         {
-            video.url = System.IO.Path.Combine(Application.streamingAssetsPath, "This boi got noise.mp4");
+            video.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Alive-Intro Boi Edition.mov");
             video.Play();
         }
     }
